@@ -8,34 +8,29 @@ class DiscoverBanner extends HookWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Swiper(
-      outer:false,
-      itemBuilder: (c, i) {
-        return Wrap(
-          runSpacing: 6.0,
-          children: [0,1,2,3,4,5,6,7,8,9].map((i){
-            return SizedBox(
-              width: MediaQuery.of(context).size.width/5,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(
-                    height: MediaQuery.of(context).size.width * 0.12,
-                    width: MediaQuery.of(context).size.width * 0.12,
-                    child: Image.network("https://img.zcool.cn/community/015beb5c212a71a80121df908e99ac.jpg?x-oss-process=image/resize,h_600/format,jpg"),
-                  ),
-                  Padding(padding: EdgeInsets.only(top:6.0),child: Text("$i"),)
-                ],
-              ),
-            );
-          }).toList(),
+    final screenWidth =  MediaQuery.of(context).size.width - 40;
+    return ConstrainedBox(
+        constraints:BoxConstraints.loose(Size(screenWidth, 170.0)),
+        child: Swiper(
+            outer:false,
+            itemBuilder: (c, i) {
+              return Wrap(
+                runSpacing: 6.0,
+                children: [0,1,2,3,4,5,6,7,8,9].map((i){
+                  return ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    clipBehavior: Clip.hardEdge,
+                    child:  Image.network("https://game-video.cdn.bcebos.com/game-video/2020-4/1587612624712/%E5%90%8C%E7%A8%8B%E6%97%85%E8%A1%8C.PNG", fit: BoxFit.cover,),
+                  );
+                }).toList(),
+              );
+            },
+            pagination: const SwiperPagination(
+                margin: EdgeInsets.all(5.0)
+            ),
+            itemCount: 10,
+          ),
         );
-      },
-      pagination: const SwiperPagination(
-          margin: EdgeInsets.all(5.0)
-      ),
-      itemCount: 10,
-    );
   }
 
 }
