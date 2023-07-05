@@ -34,7 +34,7 @@ class DiscoverTopBar extends HookWidget {
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
-                    colors: [Color(0x3394377F), Color(0x33F79283)]
+                    colors: [Color(0x33fad0c4), Color(0x33ffd1ff)]
                   )
                 ),
               child: Row(
