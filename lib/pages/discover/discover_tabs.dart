@@ -21,23 +21,38 @@ class DiscoverTabs extends HookWidget {
       Tab("${Constant.ASSETS_IMG}icon_collect.png", "收藏家"),
     ];
 
+    double width = MediaQuery.of(context).size.width;
+    double tabMarginWidth = (width - 40 - 72) / 10;
+
     return Expanded(
-        child: ListView(
-      scrollDirection: Axis.horizontal,
-      children: tabList
-          .map((tab) => Container(
-                child: Column(
-                  children: [
-                    Image.asset(
-                      tab.icon,
-                      width: 40,
-                      height: 40,
+        child: Container(
+          margin: const EdgeInsets.only(left: 18, right: 18),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: tabList
+                .map((tab) => Container(
+              margin: EdgeInsets.only(right: tabMarginWidth, left: 12),
+              child: Column(
+                children: [
+                  Image.asset(
+                    tab.icon,
+                    width: 24,
+                    height: 24,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 12),
+                    child: Text(
+                      tab.text,
+                      style: const TextStyle(fontSize: 12),
                     ),
-                  ],
-                ),
-              ))
-          .toList(),
-    ));
+                  )
+                ],
+              ),
+            ))
+                .toList(),
+          )),
+
+    );
   }
 }
 

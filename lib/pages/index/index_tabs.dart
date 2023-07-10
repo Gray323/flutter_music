@@ -4,7 +4,7 @@ import 'package:new_flutter/constant/constant.dart';
 import 'package:new_flutter/pages/broadcast/broadcast_page.dart';
 import 'package:new_flutter/pages/care/cart_page.dart';
 import 'package:new_flutter/pages/community/community_page.dart';
-import 'package:new_flutter/pages/discover/discover_page.dart';
+import 'package:new_flutter/pages/discover/discover_index.dart';
 import 'package:new_flutter/pages/mine/mine_page.dart';
 
 class IndexTabs extends HookWidget{
