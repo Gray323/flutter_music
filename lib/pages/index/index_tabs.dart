@@ -13,7 +13,7 @@ class IndexTabs extends HookWidget{
 
 
   final List tabBodies = [
-    const DiscoverPage(),
+    DiscoverPage(),
     const BroadCastPage(),
     const MinePage(),
     const CarePage(),

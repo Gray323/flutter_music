@@ -26,14 +26,6 @@ class WidgetLoginBtn extends ConsumerWidget{
               return;
             }
             FormData params = FormData.fromMap({'username': userInfo.userName, 'password': userInfo.password});
-            DioManager.instance.post(ServiceUrl.login, params, (data){
-              UserUtils.saveUserInfo(data);
-              ToastUtils.show("登录成功");
-              Navigator.pop(context);
-              Routes.navigateTo(context, Routes.indexPage);
-            }, (error){
-              ToastUtils.show(error);
-            });
          },
          child: const Padding(
            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),

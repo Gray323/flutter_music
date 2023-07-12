@@ -2,10 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:new_flutter/constant/constant.dart';
+import 'package:new_flutter/utils/log_utils.dart';
 
-class DiscoverTabs extends HookWidget {
-  const DiscoverTabs({super.key});
 
+class DiscoverTabs extends StatefulWidget {
+
+  List<IconData> dragonBallList = [];
+
+
+  DiscoverTabs(this.dragonBallList, {super.key});
+
+  @override
+  State<StatefulWidget> createState() => _DiscoverTabsState();
+}
+
+class _DiscoverTabsState extends State<DiscoverTabs>{
   @override
   Widget build(BuildContext context) {
     List<Tab> tabList = [
@@ -24,8 +35,10 @@ class DiscoverTabs extends HookWidget {
     double width = MediaQuery.of(context).size.width;
     double tabMarginWidth = (width - 40 - 72) / 10;
 
+
+
     return Expanded(
-        child: Container(
+      child: Container(
           margin: const EdgeInsets.only(left: 18, right: 18),
           child: ListView(
             scrollDirection: Axis.horizontal,
@@ -53,6 +66,15 @@ class DiscoverTabs extends HookWidget {
           )),
 
     );
+  }
+
+  @override
+  void didUpdateWidget(DiscoverTabs oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // 接口返回的图标不好看
+    // setState(() {
+    //   xxx = widget.dragonBallList
+    // });
   }
 }
 
