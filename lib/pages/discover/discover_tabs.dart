@@ -4,11 +4,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:new_flutter/constant/constant.dart';
 import 'package:new_flutter/utils/log_utils.dart';
 
+import '../../http/bean/home_page_dragon_ball_bean.dart';
 
 class DiscoverTabs extends StatefulWidget {
-
-  List<IconData> dragonBallList = [];
-
+  List<IconDataBean> dragonBallList = [];
 
   DiscoverTabs(this.dragonBallList, {super.key});
 
@@ -16,7 +15,7 @@ class DiscoverTabs extends StatefulWidget {
   State<StatefulWidget> createState() => _DiscoverTabsState();
 }
 
-class _DiscoverTabsState extends State<DiscoverTabs>{
+class _DiscoverTabsState extends State<DiscoverTabs> {
   @override
   Widget build(BuildContext context) {
     List<Tab> tabList = [
@@ -35,36 +34,34 @@ class _DiscoverTabsState extends State<DiscoverTabs>{
     double width = MediaQuery.of(context).size.width;
     double tabMarginWidth = (width - 40 - 72) / 10;
 
-
-
-    return Expanded(
-      child: Container(
+    return  Container(
+          height: 80,
           margin: const EdgeInsets.only(left: 18, right: 18),
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: tabList
                 .map((tab) => Container(
-              margin: EdgeInsets.only(right: tabMarginWidth, left: 12),
-              child: Column(
-                children: [
-                  Image.asset(
-                    tab.icon,
-                    width: 24,
-                    height: 24,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 12),
-                    child: Text(
-                      tab.text,
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  )
-                ],
-              ),
-            ))
-                .toList(),
-          )),
 
+                      margin: EdgeInsets.only(right: tabMarginWidth, left: 12),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            tab.icon,
+                            width: 24,
+                            height: 24,
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 12),
+                            child: Text(
+                              tab.text,
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          )
+                        ],
+                      ),
+                    ))
+                .toList(),
+          ),
     );
   }
 

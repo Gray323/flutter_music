@@ -1,0 +1,507 @@
+class Creatives {
+  Creatives({
+      String? creativeType, 
+      String? creativeId, 
+      String? action, 
+      String? actionType, 
+      UiElement? uiElement, 
+      List<Resources>? resources, 
+      String? alg, 
+      String? logInfo, 
+      num? position,}){
+    _creativeType = creativeType;
+    _creativeId = creativeId;
+    _action = action;
+    _actionType = actionType;
+    _uiElement = uiElement;
+    _resources = resources;
+    _alg = alg;
+    _logInfo = logInfo;
+    _position = position;
+}
+
+  Creatives.fromJson(dynamic json) {
+    _creativeType = json['creativeType'];
+    _creativeId = json['creativeId'];
+    _action = json['action'];
+    _actionType = json['actionType'];
+    _uiElement = json['uiElement'] != null ? UiElement.fromJson(json['uiElement']) : null;
+    if (json['resources'] != null) {
+      _resources = [];
+      json['resources'].forEach((v) {
+        _resources?.add(Resources.fromJson(v));
+      });
+    }
+    _alg = json['alg'];
+    _logInfo = json['logInfo'];
+    _position = json['position'];
+  }
+  String? _creativeType;
+  String? _creativeId;
+  String? _action;
+  String? _actionType;
+  UiElement? _uiElement;
+  List<Resources>? _resources;
+  String? _alg;
+  String? _logInfo;
+  num? _position;
+Creatives copyWith({  String? creativeType,
+  String? creativeId,
+  String? action,
+  String? actionType,
+  UiElement? uiElement,
+  List<Resources>? resources,
+  String? alg,
+  String? logInfo,
+  num? position,
+}) => Creatives(  creativeType: creativeType ?? _creativeType,
+  creativeId: creativeId ?? _creativeId,
+  action: action ?? _action,
+  actionType: actionType ?? _actionType,
+  uiElement: uiElement ?? _uiElement,
+  resources: resources ?? _resources,
+  alg: alg ?? _alg,
+  logInfo: logInfo ?? _logInfo,
+  position: position ?? _position,
+);
+  String? get creativeType => _creativeType;
+  String? get creativeId => _creativeId;
+  String? get action => _action;
+  String? get actionType => _actionType;
+  UiElement? get uiElement => _uiElement;
+  List<Resources>? get resources => _resources;
+  String? get alg => _alg;
+  String? get logInfo => _logInfo;
+  num? get position => _position;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['creativeType'] = _creativeType;
+    map['creativeId'] = _creativeId;
+    map['action'] = _action;
+    map['actionType'] = _actionType;
+    if (_uiElement != null) {
+      map['uiElement'] = _uiElement?.toJson();
+    }
+    if (_resources != null) {
+      map['resources'] = _resources?.map((v) => v.toJson()).toList();
+    }
+    map['alg'] = _alg;
+    map['logInfo'] = _logInfo;
+    map['position'] = _position;
+    return map;
+  }
+
+}
+
+class Resources {
+  Resources({
+      UiElement? uiElement, 
+      String? resourceType, 
+      dynamic resourceState, 
+      String? resourceId, 
+      dynamic resourceUrl, 
+      ResourceExtInfo? resourceExtInfo, 
+      String? action, 
+      String? actionType, 
+      bool? valid, 
+      String? alg, 
+      String? logInfo, 
+      dynamic ctrp, 
+      dynamic likedCount, 
+      dynamic replyCount, 
+      dynamic resourceContentList, 
+      dynamic position, 
+      dynamic playParams,}){
+    _uiElement = uiElement;
+    _resourceType = resourceType;
+    _resourceState = resourceState;
+    _resourceId = resourceId;
+    _resourceUrl = resourceUrl;
+    _resourceExtInfo = resourceExtInfo;
+    _action = action;
+    _actionType = actionType;
+    _valid = valid;
+    _alg = alg;
+    _logInfo = logInfo;
+    _ctrp = ctrp;
+    _likedCount = likedCount;
+    _replyCount = replyCount;
+    _resourceContentList = resourceContentList;
+    _position = position;
+    _playParams = playParams;
+}
+
+  Resources.fromJson(dynamic json) {
+    _uiElement = json['uiElement'] != null ? UiElement.fromJson(json['uiElement']) : null;
+    _resourceType = json['resourceType'];
+    _resourceState = json['resourceState'];
+    _resourceId = json['resourceId'];
+    _resourceUrl = json['resourceUrl'];
+    _resourceExtInfo = json['resourceExtInfo'] != null ? ResourceExtInfo.fromJson(json['resourceExtInfo']) : null;
+    _action = json['action'];
+    _actionType = json['actionType'];
+    _valid = json['valid'];
+    _alg = json['alg'];
+    _logInfo = json['logInfo'];
+    _ctrp = json['ctrp'];
+    _likedCount = json['likedCount'];
+    _replyCount = json['replyCount'];
+    _resourceContentList = json['resourceContentList'];
+    _position = json['position'];
+    _playParams = json['playParams'];
+  }
+  UiElement? _uiElement;
+  String? _resourceType;
+  dynamic _resourceState;
+  String? _resourceId;
+  dynamic _resourceUrl;
+  ResourceExtInfo? _resourceExtInfo;
+  String? _action;
+  String? _actionType;
+  bool? _valid;
+  String? _alg;
+  String? _logInfo;
+  dynamic _ctrp;
+  dynamic _likedCount;
+  dynamic _replyCount;
+  dynamic _resourceContentList;
+  dynamic _position;
+  dynamic _playParams;
+Resources copyWith({  UiElement? uiElement,
+  String? resourceType,
+  dynamic resourceState,
+  String? resourceId,
+  dynamic resourceUrl,
+  ResourceExtInfo? resourceExtInfo,
+  String? action,
+  String? actionType,
+  bool? valid,
+  String? alg,
+  String? logInfo,
+  dynamic ctrp,
+  dynamic likedCount,
+  dynamic replyCount,
+  dynamic resourceContentList,
+  dynamic position,
+  dynamic playParams,
+}) => Resources(  uiElement: uiElement ?? _uiElement,
+  resourceType: resourceType ?? _resourceType,
+  resourceState: resourceState ?? _resourceState,
+  resourceId: resourceId ?? _resourceId,
+  resourceUrl: resourceUrl ?? _resourceUrl,
+  resourceExtInfo: resourceExtInfo ?? _resourceExtInfo,
+  action: action ?? _action,
+  actionType: actionType ?? _actionType,
+  valid: valid ?? _valid,
+  alg: alg ?? _alg,
+  logInfo: logInfo ?? _logInfo,
+  ctrp: ctrp ?? _ctrp,
+  likedCount: likedCount ?? _likedCount,
+  replyCount: replyCount ?? _replyCount,
+  resourceContentList: resourceContentList ?? _resourceContentList,
+  position: position ?? _position,
+  playParams: playParams ?? _playParams,
+);
+  UiElement? get uiElement => _uiElement;
+  String? get resourceType => _resourceType;
+  dynamic get resourceState => _resourceState;
+  String? get resourceId => _resourceId;
+  dynamic get resourceUrl => _resourceUrl;
+  ResourceExtInfo? get resourceExtInfo => _resourceExtInfo;
+  String? get action => _action;
+  String? get actionType => _actionType;
+  bool? get valid => _valid;
+  String? get alg => _alg;
+  String? get logInfo => _logInfo;
+  dynamic get ctrp => _ctrp;
+  dynamic get likedCount => _likedCount;
+  dynamic get replyCount => _replyCount;
+  dynamic get resourceContentList => _resourceContentList;
+  dynamic get position => _position;
+  dynamic get playParams => _playParams;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (_uiElement != null) {
+      map['uiElement'] = _uiElement?.toJson();
+    }
+    map['resourceType'] = _resourceType;
+    map['resourceState'] = _resourceState;
+    map['resourceId'] = _resourceId;
+    map['resourceUrl'] = _resourceUrl;
+    if (_resourceExtInfo != null) {
+      map['resourceExtInfo'] = _resourceExtInfo?.toJson();
+    }
+    map['action'] = _action;
+    map['actionType'] = _actionType;
+    map['valid'] = _valid;
+    map['alg'] = _alg;
+    map['logInfo'] = _logInfo;
+    map['ctrp'] = _ctrp;
+    map['likedCount'] = _likedCount;
+    map['replyCount'] = _replyCount;
+    map['resourceContentList'] = _resourceContentList;
+    map['position'] = _position;
+    map['playParams'] = _playParams;
+    return map;
+  }
+
+}
+
+class ResourceExtInfo {
+  ResourceExtInfo({
+      num? playCount, 
+      bool? highQuality, 
+      bool? hasListened, 
+      num? specialType,}){
+    _playCount = playCount;
+    _highQuality = highQuality;
+    _hasListened = hasListened;
+    _specialType = specialType;
+}
+
+  ResourceExtInfo.fromJson(dynamic json) {
+    _playCount = json['playCount'];
+    _highQuality = json['highQuality'];
+    _hasListened = json['hasListened'];
+    _specialType = json['specialType'];
+  }
+  num? _playCount;
+  bool? _highQuality;
+  bool? _hasListened;
+  num? _specialType;
+ResourceExtInfo copyWith({  num? playCount,
+  bool? highQuality,
+  bool? hasListened,
+  num? specialType,
+}) => ResourceExtInfo(  playCount: playCount ?? _playCount,
+  highQuality: highQuality ?? _highQuality,
+  hasListened: hasListened ?? _hasListened,
+  specialType: specialType ?? _specialType,
+);
+  num? get playCount => _playCount;
+  bool? get highQuality => _highQuality;
+  bool? get hasListened => _hasListened;
+  num? get specialType => _specialType;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['playCount'] = _playCount;
+    map['highQuality'] = _highQuality;
+    map['hasListened'] = _hasListened;
+    map['specialType'] = _specialType;
+    return map;
+  }
+
+}
+
+class UiElement {
+  UiElement({
+      MainTitle? mainTitle, 
+      Image? image, 
+      List<String>? labelTexts, 
+      String? rcmdShowType,}){
+    _mainTitle = mainTitle;
+    _image = image;
+    _labelTexts = labelTexts;
+    _rcmdShowType = rcmdShowType;
+}
+
+  UiElement.fromJson(dynamic json) {
+    _mainTitle = json['mainTitle'] != null ? MainTitle.fromJson(json['mainTitle']) : null;
+    _image = json['image'] != null ? Image.fromJson(json['image']) : null;
+    _labelTexts = json['labelTexts'] != null ? json['labelTexts'].cast<String>() : [];
+    _rcmdShowType = json['rcmdShowType'];
+  }
+  MainTitle? _mainTitle;
+  Image? _image;
+  List<String>? _labelTexts;
+  String? _rcmdShowType;
+UiElement copyWith({  MainTitle? mainTitle,
+  Image? image,
+  List<String>? labelTexts,
+  String? rcmdShowType,
+}) => UiElement(  mainTitle: mainTitle ?? _mainTitle,
+  image: image ?? _image,
+  labelTexts: labelTexts ?? _labelTexts,
+  rcmdShowType: rcmdShowType ?? _rcmdShowType,
+);
+  MainTitle? get mainTitle => _mainTitle;
+  Image? get image => _image;
+  List<String>? get labelTexts => _labelTexts;
+  String? get rcmdShowType => _rcmdShowType;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (_mainTitle != null) {
+      map['mainTitle'] = _mainTitle?.toJson();
+    }
+    if (_image != null) {
+      map['image'] = _image?.toJson();
+    }
+    map['labelTexts'] = _labelTexts;
+    map['rcmdShowType'] = _rcmdShowType;
+    return map;
+  }
+
+}
+
+class Image {
+  Image({
+      String? imageUrl,}){
+    _imageUrl = imageUrl;
+}
+
+  Image.fromJson(dynamic json) {
+    _imageUrl = json['imageUrl'];
+  }
+  String? _imageUrl;
+Image copyWith({  String? imageUrl,
+}) => Image(  imageUrl: imageUrl ?? _imageUrl,
+);
+  String? get imageUrl => _imageUrl;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['imageUrl'] = _imageUrl;
+    return map;
+  }
+
+}
+
+class MainTitle {
+  MainTitle({
+      String? title, 
+      bool? canShowTitleLogo,}){
+    _title = title;
+    _canShowTitleLogo = canShowTitleLogo;
+}
+
+  MainTitle.fromJson(dynamic json) {
+    _title = json['title'];
+    _canShowTitleLogo = json['canShowTitleLogo'];
+  }
+  String? _title;
+  bool? _canShowTitleLogo;
+MainTitle copyWith({  String? title,
+  bool? canShowTitleLogo,
+}) => MainTitle(  title: title ?? _title,
+  canShowTitleLogo: canShowTitleLogo ?? _canShowTitleLogo,
+);
+  String? get title => _title;
+  bool? get canShowTitleLogo => _canShowTitleLogo;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['title'] = _title;
+    map['canShowTitleLogo'] = _canShowTitleLogo;
+    return map;
+  }
+
+}
+
+class UiElement {
+  UiElement({
+      MainTitle? mainTitle, 
+      Image? image, 
+      List<String>? labelTexts, 
+      String? rcmdShowType,}){
+    _mainTitle = mainTitle;
+    _image = image;
+    _labelTexts = labelTexts;
+    _rcmdShowType = rcmdShowType;
+}
+
+  UiElement.fromJson(dynamic json) {
+    _mainTitle = json['mainTitle'] != null ? MainTitle.fromJson(json['mainTitle']) : null;
+    _image = json['image'] != null ? Image.fromJson(json['image']) : null;
+    _labelTexts = json['labelTexts'] != null ? json['labelTexts'].cast<String>() : [];
+    _rcmdShowType = json['rcmdShowType'];
+  }
+  MainTitle? _mainTitle;
+  Image? _image;
+  List<String>? _labelTexts;
+  String? _rcmdShowType;
+UiElement copyWith({  MainTitle? mainTitle,
+  Image? image,
+  List<String>? labelTexts,
+  String? rcmdShowType,
+}) => UiElement(  mainTitle: mainTitle ?? _mainTitle,
+  image: image ?? _image,
+  labelTexts: labelTexts ?? _labelTexts,
+  rcmdShowType: rcmdShowType ?? _rcmdShowType,
+);
+  MainTitle? get mainTitle => _mainTitle;
+  Image? get image => _image;
+  List<String>? get labelTexts => _labelTexts;
+  String? get rcmdShowType => _rcmdShowType;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (_mainTitle != null) {
+      map['mainTitle'] = _mainTitle?.toJson();
+    }
+    if (_image != null) {
+      map['image'] = _image?.toJson();
+    }
+    map['labelTexts'] = _labelTexts;
+    map['rcmdShowType'] = _rcmdShowType;
+    return map;
+  }
+
+}
+
+class Image {
+  Image({
+      String? imageUrl,}){
+    _imageUrl = imageUrl;
+}
+
+  Image.fromJson(dynamic json) {
+    _imageUrl = json['imageUrl'];
+  }
+  String? _imageUrl;
+Image copyWith({  String? imageUrl,
+}) => Image(  imageUrl: imageUrl ?? _imageUrl,
+);
+  String? get imageUrl => _imageUrl;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['imageUrl'] = _imageUrl;
+    return map;
+  }
+
+}
+
+class MainTitle {
+  MainTitle({
+      String? title, 
+      bool? canShowTitleLogo,}){
+    _title = title;
+    _canShowTitleLogo = canShowTitleLogo;
+}
+
+  MainTitle.fromJson(dynamic json) {
+    _title = json['title'];
+    _canShowTitleLogo = json['canShowTitleLogo'];
+  }
+  String? _title;
+  bool? _canShowTitleLogo;
+MainTitle copyWith({  String? title,
+  bool? canShowTitleLogo,
+}) => MainTitle(  title: title ?? _title,
+  canShowTitleLogo: canShowTitleLogo ?? _canShowTitleLogo,
+);
+  String? get title => _title;
+  bool? get canShowTitleLogo => _canShowTitleLogo;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['title'] = _title;
+    map['canShowTitleLogo'] = _canShowTitleLogo;
+    return map;
+  }
+
+}

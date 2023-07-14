@@ -1,7 +1,7 @@
 class HomePageDragonBallBean {
   HomePageDragonBallBean({
       num? code, 
-      List<IconData>? data, 
+      List<IconDataBean>? data,
       String? message,}){
     _code = code;
     _data = data;
@@ -13,23 +13,23 @@ class HomePageDragonBallBean {
     if (json['data'] != null) {
       _data = [];
       json['data'].forEach((v) {
-        _data?.add(IconData.fromJson(v));
+        _data?.add(IconDataBean.fromJson(v));
       });
     }
     _message = json['message'];
   }
   num? _code;
-  List<IconData>? _data;
+  List<IconDataBean>? _data;
   String? _message;
 HomePageDragonBallBean copyWith({  num? code,
-  List<IconData>? data,
+  List<IconDataBean>? data,
   String? message,
 }) => HomePageDragonBallBean(  code: code ?? _code,
   data: data ?? _data,
   message: message ?? _message,
 );
   num? get code => _code;
-  List<IconData>? get data => _data;
+  List<IconDataBean>? get data => _data;
   String? get message => _message;
 
   Map<String, dynamic> toJson() {
@@ -44,8 +44,8 @@ HomePageDragonBallBean copyWith({  num? code,
 
 }
 
-class IconData {
-  IconData({
+class IconDataBean {
+  IconDataBean({
       num? id, 
       String? name, 
       String? iconUrl, 
@@ -62,7 +62,7 @@ class IconData {
     _resourceState = resourceState;
 }
 
-  IconData.fromJson(dynamic json) {
+  IconDataBean.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
     _iconUrl = json['iconUrl'];
@@ -78,14 +78,14 @@ class IconData {
   bool? _skinSupport;
   String? _homepageMode;
   dynamic _resourceState;
-IconData copyWith({  num? id,
+IconDataBean copyWith({  num? id,
   String? name,
   String? iconUrl,
   String? url,
   bool? skinSupport,
   String? homepageMode,
   dynamic resourceState,
-}) => IconData(  id: id ?? _id,
+}) => IconDataBean(  id: id ?? _id,
   name: name ?? _name,
   iconUrl: iconUrl ?? _iconUrl,
   url: url ?? _url,

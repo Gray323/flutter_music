@@ -7,8 +7,11 @@ import 'package:new_flutter/http/services_url.dart';
 import 'package:new_flutter/pages/discover/discover_banner.dart';
 import 'package:new_flutter/pages/discover/discover_top_bar.dart';
 import 'package:new_flutter/pages/discover/discover_tabs.dart';
+import 'package:new_flutter/pages/discover/recommended_song_list.dart';
+import 'package:new_flutter/utils/log_utils.dart';
 
 import '../../http/bean/home_page_bean.dart';
+import '../../http/bean/home_page_dragon_ball_bean.dart';
 
 class DiscoverPage extends StatefulWidget {
   @override
@@ -17,21 +20,43 @@ class DiscoverPage extends StatefulWidget {
 
 class _DiscoverPageState extends State<DiscoverPage> {
 
-  List<IconData> dragonBallList = [];
-  List<Banners> banners = [];
+  List<IconDataBean> dragonBallList = [];
+  List<Banners>? banners = [];
+  Data homePageBean = Data();
+  List<Creatives>? recommendList = [];
 
   @override
   void initState() {
     super.initState();
     DioManager.instance.get(ServiceUrl.getHomeDragonBall, null, (data) {
       setState(() {
-        dragonBallList = List<IconData>.from(
-            json.decode(json.encode((data))).map((e) => Data.fromJson(e)));
+        dragonBallList = List<IconDataBean>.from(
+            json.decode(json.encode((data))).map((e) => IconDataBean.fromJson(e)));
       });
     });
 
     DioManager.instance.get(ServiceUrl.getHomePage, null, (data) {
 
+      homePageBean = Data.fromJson(json.decode(json.encode(data)));
+      // 轮播图
+      List<Blocks>? blocks = homePageBean.blocks;
+      ExtInfo? extInfo = blocks?[0].extInfo;
+
+
+      List<Creatives>? creativeRecommend = [];
+      //个性歌单
+      blocks?.forEach((element) {
+        switch(element.blockCode){
+        // 个性歌单
+          case "HOMEPAGE_BLOCK_PLAYLIST_RCMD":
+              creativeRecommend = element?.creatives;
+            break;
+        }
+      });
+
+      banners = extInfo?.banners;
+      recommendList = creativeRecommend;
+      setState(() {});
     });
   }
 
@@ -46,8 +71,9 @@ class _DiscoverPageState extends State<DiscoverPage> {
     return Column(
       children: [
         DiscoverTopBar(),
-        DiscoverBanner(),
+        DiscoverBanner(banners),
         DiscoverTabs(dragonBallList),
+        RecommendedSongList(recommendList)
       ],
     );
   }
