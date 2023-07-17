@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:new_flutter/constant/constant.dart';
@@ -7,10 +9,18 @@ import 'package:new_flutter/pages/community/community_page.dart';
 import 'package:new_flutter/pages/discover/discover_index.dart';
 import 'package:new_flutter/pages/mine/mine_page.dart';
 
-class IndexTabs extends HookWidget{
-  IndexTabs({super.key});
+import '../../utils/event_bus_utils.dart';
+import '../discover/widget/discover_bottom_sheet.dart';
 
+class IndexTabs extends StatefulWidget{
+  const IndexTabs({super.key});
 
+  @override
+  State<StatefulWidget> createState() => IndexTabState();
+
+}
+
+class IndexTabState extends State<IndexTabs>{
 
   final List tabBodies = [
     DiscoverPage(),
@@ -19,6 +29,8 @@ class IndexTabs extends HookWidget{
     const CarePage(),
     const CommunityPage()
   ];
+
+
 
 
   final List<BottomNavigationBarItem> bottomTabs = [
@@ -51,23 +63,32 @@ class IndexTabs extends HookWidget{
 
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    final currentIndex = useState(0);
+    int currentIndex =0;
 
     return Scaffold(
       backgroundColor: const Color(0xfff7f9fc),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: bottomTabs,
-        currentIndex: currentIndex.value,
+        currentIndex: currentIndex,
         selectedItemColor: Colors.red,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         onTap: (index){
-          currentIndex.value = index;
+          setState(() {
+            currentIndex = index;
+          });
         },
       ),
-      body: tabBodies[currentIndex.value],
+      body: tabBodies[currentIndex],
     );
   }
 

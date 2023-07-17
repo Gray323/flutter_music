@@ -317,6 +317,7 @@ class Blocks {
       bool? canFeedback,
       bool? blockDemote,
       List<Creatives>? creatives,
+
       num? sort,}){
     _blockCode = blockCode;
     _showType = showType;
@@ -1945,6 +1946,2287 @@ class MainTitle {
     final map = <String, dynamic>{};
     map['title'] = _title;
     map['canShowTitleLogo'] = _canShowTitleLogo;
+    return map;
+  }
+
+}
+
+
+class TopCreatives {
+  TopCreatives({
+    String? creativeType,
+    String? creativeId,
+    String? algCreativeId,
+    String? action,
+    String? actionType,
+    TopUiElement? uiElement,
+    CreativeExtInfoVo? creativeExtInfoVO,
+    List<TopResources>? resources,
+    String? alg,
+    num? position,}){
+    _creativeType = creativeType;
+    _creativeId = creativeId;
+    _algCreativeId = algCreativeId;
+    _action = action;
+    _actionType = actionType;
+    _uiElement = uiElement;
+    _creativeExtInfoVO = creativeExtInfoVO;
+    _resources = resources;
+    _alg = alg;
+    _position = position;
+  }
+
+  TopCreatives.fromJson(dynamic json) {
+    _creativeType = json['creativeType'];
+    _creativeId = json['creativeId'];
+    _algCreativeId = json['algCreativeId'];
+    _action = json['action'];
+    _actionType = json['actionType'];
+    _uiElement = json['uiElement'] != null ? TopUiElement.fromJson(json['uiElement']) : null;
+    _creativeExtInfoVO = json['creativeExtInfoVO'] != null ? CreativeExtInfoVo.fromJson(json['creativeExtInfoVO']) : null;
+    if (json['resources'] != null) {
+      _resources = [];
+      json['resources'].forEach((v) {
+        _resources?.add(TopResources.fromJson(v));
+      });
+    }
+    _alg = json['alg'];
+    _position = json['position'];
+  }
+  String? _creativeType;
+  String? _creativeId;
+  String? _algCreativeId;
+  String? _action;
+  String? _actionType;
+  TopUiElement? _uiElement;
+  CreativeExtInfoVo? _creativeExtInfoVO;
+  List<TopResources>? _resources;
+  String? _alg;
+  num? _position;
+  TopCreatives copyWith({  String? creativeType,
+    String? creativeId,
+    String? algCreativeId,
+    String? action,
+    String? actionType,
+    TopUiElement? uiElement,
+    CreativeExtInfoVo? creativeExtInfoVO,
+    List<TopResources>? resources,
+    String? alg,
+    num? position,
+  }) => TopCreatives(  creativeType: creativeType ?? _creativeType,
+    creativeId: creativeId ?? _creativeId,
+    algCreativeId: algCreativeId ?? _algCreativeId,
+    action: action ?? _action,
+    actionType: actionType ?? _actionType,
+    uiElement: uiElement ?? _uiElement,
+    creativeExtInfoVO: creativeExtInfoVO ?? _creativeExtInfoVO,
+    resources: resources ?? _resources,
+    alg: alg ?? _alg,
+    position: position ?? _position,
+  );
+  String? get creativeType => _creativeType;
+  String? get creativeId => _creativeId;
+  String? get algCreativeId => _algCreativeId;
+  String? get action => _action;
+  String? get actionType => _actionType;
+  TopUiElement? get uiElement => _uiElement;
+  CreativeExtInfoVo? get creativeExtInfoVO => _creativeExtInfoVO;
+  List<TopResources>? get resources => _resources;
+  String? get alg => _alg;
+  num? get position => _position;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['creativeType'] = _creativeType;
+    map['creativeId'] = _creativeId;
+    map['algCreativeId'] = _algCreativeId;
+    map['action'] = _action;
+    map['actionType'] = _actionType;
+    if (_uiElement != null) {
+      map['uiElement'] = _uiElement?.toJson();
+    }
+    if (_creativeExtInfoVO != null) {
+      map['creativeExtInfoVO'] = _creativeExtInfoVO?.toJson();
+    }
+    if (_resources != null) {
+      map['resources'] = _resources?.map((v) => v.toJson()).toList();
+    }
+    map['alg'] = _alg;
+    map['position'] = _position;
+    return map;
+  }
+
+}
+
+class TopResources {
+  TopResources({
+    TopUiElement? uiElement,
+    String? resourceType,
+    dynamic resourceState,
+    String? resourceId,
+    dynamic resourceUrl,
+    TopResourceExtInfo? resourceExtInfo,
+    String? action,
+    String? actionType,
+    bool? valid,
+    dynamic alg,
+    dynamic logInfo,
+    dynamic ctrp,
+    dynamic likedCount,
+    dynamic replyCount,
+    dynamic resourceContentList,
+    dynamic position,
+    dynamic playParams,}){
+    _uiElement = uiElement;
+    _resourceType = resourceType;
+    _resourceState = resourceState;
+    _resourceId = resourceId;
+    _resourceUrl = resourceUrl;
+    _resourceExtInfo = resourceExtInfo;
+    _action = action;
+    _actionType = actionType;
+    _valid = valid;
+    _alg = alg;
+    _logInfo = logInfo;
+    _ctrp = ctrp;
+    _likedCount = likedCount;
+    _replyCount = replyCount;
+    _resourceContentList = resourceContentList;
+    _position = position;
+    _playParams = playParams;
+  }
+
+  TopResources.fromJson(dynamic json) {
+    _uiElement = json['uiElement'] != null ? TopUiElement.fromJson(json['uiElement']) : null;
+    _resourceType = json['resourceType'];
+    _resourceState = json['resourceState'];
+    _resourceId = json['resourceId'];
+    _resourceUrl = json['resourceUrl'];
+    _resourceExtInfo = json['resourceExtInfo'] != null ? TopResourceExtInfo.fromJson(json['resourceExtInfo']) : null;
+    _action = json['action'];
+    _actionType = json['actionType'];
+    _valid = json['valid'];
+    _alg = json['alg'];
+    _logInfo = json['logInfo'];
+    _ctrp = json['ctrp'];
+    _likedCount = json['likedCount'];
+    _replyCount = json['replyCount'];
+    _resourceContentList = json['resourceContentList'];
+    _position = json['position'];
+    _playParams = json['playParams'];
+  }
+  TopUiElement? _uiElement;
+  String? _resourceType;
+  dynamic _resourceState;
+  String? _resourceId;
+  dynamic _resourceUrl;
+  TopResourceExtInfo? _resourceExtInfo;
+  String? _action;
+  String? _actionType;
+  bool? _valid;
+  dynamic _alg;
+  dynamic _logInfo;
+  dynamic _ctrp;
+  dynamic _likedCount;
+  dynamic _replyCount;
+  dynamic _resourceContentList;
+  dynamic _position;
+  dynamic _playParams;
+  TopResources copyWith({  TopUiElement? uiElement,
+    String? resourceType,
+    dynamic resourceState,
+    String? resourceId,
+    dynamic resourceUrl,
+    TopResourceExtInfo? resourceExtInfo,
+    String? action,
+    String? actionType,
+    bool? valid,
+    dynamic alg,
+    dynamic logInfo,
+    dynamic ctrp,
+    dynamic likedCount,
+    dynamic replyCount,
+    dynamic resourceContentList,
+    dynamic position,
+    dynamic playParams,
+  }) => TopResources(  uiElement: uiElement ?? _uiElement,
+    resourceType: resourceType ?? _resourceType,
+    resourceState: resourceState ?? _resourceState,
+    resourceId: resourceId ?? _resourceId,
+    resourceUrl: resourceUrl ?? _resourceUrl,
+    resourceExtInfo: resourceExtInfo ?? _resourceExtInfo,
+    action: action ?? _action,
+    actionType: actionType ?? _actionType,
+    valid: valid ?? _valid,
+    alg: alg ?? _alg,
+    logInfo: logInfo ?? _logInfo,
+    ctrp: ctrp ?? _ctrp,
+    likedCount: likedCount ?? _likedCount,
+    replyCount: replyCount ?? _replyCount,
+    resourceContentList: resourceContentList ?? _resourceContentList,
+    position: position ?? _position,
+    playParams: playParams ?? _playParams,
+  );
+  TopUiElement? get uiElement => _uiElement;
+  String? get resourceType => _resourceType;
+  dynamic get resourceState => _resourceState;
+  String? get resourceId => _resourceId;
+  dynamic get resourceUrl => _resourceUrl;
+  TopResourceExtInfo? get resourceExtInfo => _resourceExtInfo;
+  String? get action => _action;
+  String? get actionType => _actionType;
+  bool? get valid => _valid;
+  dynamic get alg => _alg;
+  dynamic get logInfo => _logInfo;
+  dynamic get ctrp => _ctrp;
+  dynamic get likedCount => _likedCount;
+  dynamic get replyCount => _replyCount;
+  dynamic get resourceContentList => _resourceContentList;
+  dynamic get position => _position;
+  dynamic get playParams => _playParams;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (_uiElement != null) {
+      map['uiElement'] = _uiElement?.toJson();
+    }
+    map['resourceType'] = _resourceType;
+    map['resourceState'] = _resourceState;
+    map['resourceId'] = _resourceId;
+    map['resourceUrl'] = _resourceUrl;
+    if (_resourceExtInfo != null) {
+      map['resourceExtInfo'] = _resourceExtInfo?.toJson();
+    }
+    map['action'] = _action;
+    map['actionType'] = _actionType;
+    map['valid'] = _valid;
+    map['alg'] = _alg;
+    map['logInfo'] = _logInfo;
+    map['ctrp'] = _ctrp;
+    map['likedCount'] = _likedCount;
+    map['replyCount'] = _replyCount;
+    map['resourceContentList'] = _resourceContentList;
+    map['position'] = _position;
+    map['playParams'] = _playParams;
+    return map;
+  }
+
+}
+
+class TopResourceExtInfo {
+  TopResourceExtInfo({
+    List<Artists>? artists,
+    SongData? songData,
+    bool? hasListened,
+    SongPrivilege? songPrivilege,}){
+    _artists = artists;
+    _songData = songData;
+    _hasListened = hasListened;
+    _songPrivilege = songPrivilege;
+  }
+
+  TopResourceExtInfo.fromJson(dynamic json) {
+    if (json['artists'] != null) {
+      _artists = [];
+      json['artists'].forEach((v) {
+        _artists?.add(Artists.fromJson(v));
+      });
+    }
+    _songData = json['songData'] != null ? SongData.fromJson(json['songData']) : null;
+    _hasListened = json['hasListened'];
+    _songPrivilege = json['songPrivilege'] != null ? SongPrivilege.fromJson(json['songPrivilege']) : null;
+  }
+  List<Artists>? _artists;
+  SongData? _songData;
+  bool? _hasListened;
+  SongPrivilege? _songPrivilege;
+  TopResourceExtInfo copyWith({  List<Artists>? artists,
+    SongData? songData,
+    bool? hasListened,
+    SongPrivilege? songPrivilege,
+  }) => TopResourceExtInfo(  artists: artists ?? _artists,
+    songData: songData ?? _songData,
+    hasListened: hasListened ?? _hasListened,
+    songPrivilege: songPrivilege ?? _songPrivilege,
+  );
+  List<Artists>? get artists => _artists;
+  SongData? get songData => _songData;
+  bool? get hasListened => _hasListened;
+  SongPrivilege? get songPrivilege => _songPrivilege;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (_artists != null) {
+      map['artists'] = _artists?.map((v) => v.toJson()).toList();
+    }
+    if (_songData != null) {
+      map['songData'] = _songData?.toJson();
+    }
+    map['hasListened'] = _hasListened;
+    if (_songPrivilege != null) {
+      map['songPrivilege'] = _songPrivilege?.toJson();
+    }
+    return map;
+  }
+
+}
+
+class SongPrivilege {
+  SongPrivilege({
+    num? id,
+    num? fee,
+    num? payed,
+    num? realPayed,
+    num? st,
+    num? pl,
+    num? dl,
+    num? sp,
+    num? cp,
+    num? subp,
+    bool? cs,
+    num? maxbr,
+    num? fl,
+    dynamic pc,
+    bool? toast,
+    num? flag,
+    bool? paidBigBang,
+    bool? preSell,
+    num? playMaxbr,
+    num? downloadMaxbr,
+    String? maxBrLevel,
+    String? playMaxBrLevel,
+    String? downloadMaxBrLevel,
+    String? plLevel,
+    String? dlLevel,
+    String? flLevel,
+    dynamic rscl,
+    FreeTrialPrivilege? freeTrialPrivilege,
+    num? rightSource,
+    List<ChargeInfoList>? chargeInfoList,}){
+    _id = id;
+    _fee = fee;
+    _payed = payed;
+    _realPayed = realPayed;
+    _st = st;
+    _pl = pl;
+    _dl = dl;
+    _sp = sp;
+    _cp = cp;
+    _subp = subp;
+    _cs = cs;
+    _maxbr = maxbr;
+    _fl = fl;
+    _pc = pc;
+    _toast = toast;
+    _flag = flag;
+    _paidBigBang = paidBigBang;
+    _preSell = preSell;
+    _playMaxbr = playMaxbr;
+    _downloadMaxbr = downloadMaxbr;
+    _maxBrLevel = maxBrLevel;
+    _playMaxBrLevel = playMaxBrLevel;
+    _downloadMaxBrLevel = downloadMaxBrLevel;
+    _plLevel = plLevel;
+    _dlLevel = dlLevel;
+    _flLevel = flLevel;
+    _rscl = rscl;
+    _freeTrialPrivilege = freeTrialPrivilege;
+    _rightSource = rightSource;
+    _chargeInfoList = chargeInfoList;
+  }
+
+  SongPrivilege.fromJson(dynamic json) {
+    _id = json['id'];
+    _fee = json['fee'];
+    _payed = json['payed'];
+    _realPayed = json['realPayed'];
+    _st = json['st'];
+    _pl = json['pl'];
+    _dl = json['dl'];
+    _sp = json['sp'];
+    _cp = json['cp'];
+    _subp = json['subp'];
+    _cs = json['cs'];
+    _maxbr = json['maxbr'];
+    _fl = json['fl'];
+    _pc = json['pc'];
+    _toast = json['toast'];
+    _flag = json['flag'];
+    _paidBigBang = json['paidBigBang'];
+    _preSell = json['preSell'];
+    _playMaxbr = json['playMaxbr'];
+    _downloadMaxbr = json['downloadMaxbr'];
+    _maxBrLevel = json['maxBrLevel'];
+    _playMaxBrLevel = json['playMaxBrLevel'];
+    _downloadMaxBrLevel = json['downloadMaxBrLevel'];
+    _plLevel = json['plLevel'];
+    _dlLevel = json['dlLevel'];
+    _flLevel = json['flLevel'];
+    _rscl = json['rscl'];
+    _freeTrialPrivilege = json['freeTrialPrivilege'] != null ? FreeTrialPrivilege.fromJson(json['freeTrialPrivilege']) : null;
+    _rightSource = json['rightSource'];
+    if (json['chargeInfoList'] != null) {
+      _chargeInfoList = [];
+      json['chargeInfoList'].forEach((v) {
+        _chargeInfoList?.add(ChargeInfoList.fromJson(v));
+      });
+    }
+  }
+  num? _id;
+  num? _fee;
+  num? _payed;
+  num? _realPayed;
+  num? _st;
+  num? _pl;
+  num? _dl;
+  num? _sp;
+  num? _cp;
+  num? _subp;
+  bool? _cs;
+  num? _maxbr;
+  num? _fl;
+  dynamic _pc;
+  bool? _toast;
+  num? _flag;
+  bool? _paidBigBang;
+  bool? _preSell;
+  num? _playMaxbr;
+  num? _downloadMaxbr;
+  String? _maxBrLevel;
+  String? _playMaxBrLevel;
+  String? _downloadMaxBrLevel;
+  String? _plLevel;
+  String? _dlLevel;
+  String? _flLevel;
+  dynamic _rscl;
+  FreeTrialPrivilege? _freeTrialPrivilege;
+  num? _rightSource;
+  List<ChargeInfoList>? _chargeInfoList;
+  SongPrivilege copyWith({  num? id,
+    num? fee,
+    num? payed,
+    num? realPayed,
+    num? st,
+    num? pl,
+    num? dl,
+    num? sp,
+    num? cp,
+    num? subp,
+    bool? cs,
+    num? maxbr,
+    num? fl,
+    dynamic pc,
+    bool? toast,
+    num? flag,
+    bool? paidBigBang,
+    bool? preSell,
+    num? playMaxbr,
+    num? downloadMaxbr,
+    String? maxBrLevel,
+    String? playMaxBrLevel,
+    String? downloadMaxBrLevel,
+    String? plLevel,
+    String? dlLevel,
+    String? flLevel,
+    dynamic rscl,
+    FreeTrialPrivilege? freeTrialPrivilege,
+    num? rightSource,
+    List<ChargeInfoList>? chargeInfoList,
+  }) => SongPrivilege(  id: id ?? _id,
+    fee: fee ?? _fee,
+    payed: payed ?? _payed,
+    realPayed: realPayed ?? _realPayed,
+    st: st ?? _st,
+    pl: pl ?? _pl,
+    dl: dl ?? _dl,
+    sp: sp ?? _sp,
+    cp: cp ?? _cp,
+    subp: subp ?? _subp,
+    cs: cs ?? _cs,
+    maxbr: maxbr ?? _maxbr,
+    fl: fl ?? _fl,
+    pc: pc ?? _pc,
+    toast: toast ?? _toast,
+    flag: flag ?? _flag,
+    paidBigBang: paidBigBang ?? _paidBigBang,
+    preSell: preSell ?? _preSell,
+    playMaxbr: playMaxbr ?? _playMaxbr,
+    downloadMaxbr: downloadMaxbr ?? _downloadMaxbr,
+    maxBrLevel: maxBrLevel ?? _maxBrLevel,
+    playMaxBrLevel: playMaxBrLevel ?? _playMaxBrLevel,
+    downloadMaxBrLevel: downloadMaxBrLevel ?? _downloadMaxBrLevel,
+    plLevel: plLevel ?? _plLevel,
+    dlLevel: dlLevel ?? _dlLevel,
+    flLevel: flLevel ?? _flLevel,
+    rscl: rscl ?? _rscl,
+    freeTrialPrivilege: freeTrialPrivilege ?? _freeTrialPrivilege,
+    rightSource: rightSource ?? _rightSource,
+    chargeInfoList: chargeInfoList ?? _chargeInfoList,
+  );
+  num? get id => _id;
+  num? get fee => _fee;
+  num? get payed => _payed;
+  num? get realPayed => _realPayed;
+  num? get st => _st;
+  num? get pl => _pl;
+  num? get dl => _dl;
+  num? get sp => _sp;
+  num? get cp => _cp;
+  num? get subp => _subp;
+  bool? get cs => _cs;
+  num? get maxbr => _maxbr;
+  num? get fl => _fl;
+  dynamic get pc => _pc;
+  bool? get toast => _toast;
+  num? get flag => _flag;
+  bool? get paidBigBang => _paidBigBang;
+  bool? get preSell => _preSell;
+  num? get playMaxbr => _playMaxbr;
+  num? get downloadMaxbr => _downloadMaxbr;
+  String? get maxBrLevel => _maxBrLevel;
+  String? get playMaxBrLevel => _playMaxBrLevel;
+  String? get downloadMaxBrLevel => _downloadMaxBrLevel;
+  String? get plLevel => _plLevel;
+  String? get dlLevel => _dlLevel;
+  String? get flLevel => _flLevel;
+  dynamic get rscl => _rscl;
+  FreeTrialPrivilege? get freeTrialPrivilege => _freeTrialPrivilege;
+  num? get rightSource => _rightSource;
+  List<ChargeInfoList>? get chargeInfoList => _chargeInfoList;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = _id;
+    map['fee'] = _fee;
+    map['payed'] = _payed;
+    map['realPayed'] = _realPayed;
+    map['st'] = _st;
+    map['pl'] = _pl;
+    map['dl'] = _dl;
+    map['sp'] = _sp;
+    map['cp'] = _cp;
+    map['subp'] = _subp;
+    map['cs'] = _cs;
+    map['maxbr'] = _maxbr;
+    map['fl'] = _fl;
+    map['pc'] = _pc;
+    map['toast'] = _toast;
+    map['flag'] = _flag;
+    map['paidBigBang'] = _paidBigBang;
+    map['preSell'] = _preSell;
+    map['playMaxbr'] = _playMaxbr;
+    map['downloadMaxbr'] = _downloadMaxbr;
+    map['maxBrLevel'] = _maxBrLevel;
+    map['playMaxBrLevel'] = _playMaxBrLevel;
+    map['downloadMaxBrLevel'] = _downloadMaxBrLevel;
+    map['plLevel'] = _plLevel;
+    map['dlLevel'] = _dlLevel;
+    map['flLevel'] = _flLevel;
+    map['rscl'] = _rscl;
+    if (_freeTrialPrivilege != null) {
+      map['freeTrialPrivilege'] = _freeTrialPrivilege?.toJson();
+    }
+    map['rightSource'] = _rightSource;
+    if (_chargeInfoList != null) {
+      map['chargeInfoList'] = _chargeInfoList?.map((v) => v.toJson()).toList();
+    }
+    return map;
+  }
+
+}
+
+class ChargeInfoList {
+  ChargeInfoList({
+    num? rate,
+    dynamic chargeUrl,
+    dynamic chargeMessage,
+    num? chargeType,}){
+    _rate = rate;
+    _chargeUrl = chargeUrl;
+    _chargeMessage = chargeMessage;
+    _chargeType = chargeType;
+  }
+
+  ChargeInfoList.fromJson(dynamic json) {
+    _rate = json['rate'];
+    _chargeUrl = json['chargeUrl'];
+    _chargeMessage = json['chargeMessage'];
+    _chargeType = json['chargeType'];
+  }
+  num? _rate;
+  dynamic _chargeUrl;
+  dynamic _chargeMessage;
+  num? _chargeType;
+  ChargeInfoList copyWith({  num? rate,
+    dynamic chargeUrl,
+    dynamic chargeMessage,
+    num? chargeType,
+  }) => ChargeInfoList(  rate: rate ?? _rate,
+    chargeUrl: chargeUrl ?? _chargeUrl,
+    chargeMessage: chargeMessage ?? _chargeMessage,
+    chargeType: chargeType ?? _chargeType,
+  );
+  num? get rate => _rate;
+  dynamic get chargeUrl => _chargeUrl;
+  dynamic get chargeMessage => _chargeMessage;
+  num? get chargeType => _chargeType;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['rate'] = _rate;
+    map['chargeUrl'] = _chargeUrl;
+    map['chargeMessage'] = _chargeMessage;
+    map['chargeType'] = _chargeType;
+    return map;
+  }
+
+}
+
+class FreeTrialPrivilege {
+  FreeTrialPrivilege({
+    bool? resConsumable,
+    bool? userConsumable,
+    dynamic listenType,
+    dynamic cannotListenReason,}){
+    _resConsumable = resConsumable;
+    _userConsumable = userConsumable;
+    _listenType = listenType;
+    _cannotListenReason = cannotListenReason;
+  }
+
+  FreeTrialPrivilege.fromJson(dynamic json) {
+    _resConsumable = json['resConsumable'];
+    _userConsumable = json['userConsumable'];
+    _listenType = json['listenType'];
+    _cannotListenReason = json['cannotListenReason'];
+  }
+  bool? _resConsumable;
+  bool? _userConsumable;
+  dynamic _listenType;
+  dynamic _cannotListenReason;
+  FreeTrialPrivilege copyWith({  bool? resConsumable,
+    bool? userConsumable,
+    dynamic listenType,
+    dynamic cannotListenReason,
+  }) => FreeTrialPrivilege(  resConsumable: resConsumable ?? _resConsumable,
+    userConsumable: userConsumable ?? _userConsumable,
+    listenType: listenType ?? _listenType,
+    cannotListenReason: cannotListenReason ?? _cannotListenReason,
+  );
+  bool? get resConsumable => _resConsumable;
+  bool? get userConsumable => _userConsumable;
+  dynamic get listenType => _listenType;
+  dynamic get cannotListenReason => _cannotListenReason;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['resConsumable'] = _resConsumable;
+    map['userConsumable'] = _userConsumable;
+    map['listenType'] = _listenType;
+    map['cannotListenReason'] = _cannotListenReason;
+    return map;
+  }
+
+}
+
+class SongData {
+  SongData({
+    String? name,
+    num? id,
+    num? position,
+    List<dynamic>? alias,
+    num? status,
+    num? fee,
+    num? copyrightId,
+    String? disc,
+    num? no,
+    List<Artists>? artists,
+    Album? album,
+    bool? starred,
+    num? popularity,
+    num? score,
+    num? starredNum,
+    num? duration,
+    num? playedNum,
+    num? dayPlays,
+    num? hearTime,
+    SqMusic? sqMusic,
+    HrMusic? hrMusic,
+    String? ringtone,
+    dynamic crbt,
+    dynamic audition,
+    String? copyFrom,
+    String? commentThreadId,
+    dynamic rtUrl,
+    num? ftype,
+    List<dynamic>? rtUrls,
+    num? copyright,
+    dynamic transName,
+    dynamic sign,
+    num? mark,
+    num? originCoverType,
+    dynamic originSongSimpleData,
+    num? single,
+    dynamic noCopyrightRcmd,
+    MMusic? mMusic,
+    LMusic? lMusic,
+    BMusic? bMusic,
+    num? rtype,
+    dynamic rurl,
+    HMusic? hMusic,
+    num? mvid,
+    dynamic mp3Url,}){
+    _name = name;
+    _id = id;
+    _position = position;
+    _alias = alias;
+    _status = status;
+    _fee = fee;
+    _copyrightId = copyrightId;
+    _disc = disc;
+    _no = no;
+    _artists = artists;
+    _album = album;
+    _starred = starred;
+    _popularity = popularity;
+    _score = score;
+    _starredNum = starredNum;
+    _duration = duration;
+    _playedNum = playedNum;
+    _dayPlays = dayPlays;
+    _hearTime = hearTime;
+    _sqMusic = sqMusic;
+    _hrMusic = hrMusic;
+    _ringtone = ringtone;
+    _crbt = crbt;
+    _audition = audition;
+    _copyFrom = copyFrom;
+    _commentThreadId = commentThreadId;
+    _rtUrl = rtUrl;
+    _ftype = ftype;
+    _rtUrls = rtUrls;
+    _copyright = copyright;
+    _transName = transName;
+    _sign = sign;
+    _mark = mark;
+    _originCoverType = originCoverType;
+    _originSongSimpleData = originSongSimpleData;
+    _single = single;
+    _noCopyrightRcmd = noCopyrightRcmd;
+    _mMusic = mMusic;
+    _lMusic = lMusic;
+    _bMusic = bMusic;
+    _rtype = rtype;
+    _rurl = rurl;
+    _hMusic = hMusic;
+    _mvid = mvid;
+    _mp3Url = mp3Url;
+  }
+
+  SongData.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _position = json['position'];
+    _status = json['status'];
+    _fee = json['fee'];
+    _copyrightId = json['copyrightId'];
+    _disc = json['disc'];
+    _no = json['no'];
+    if (json['artists'] != null) {
+      _artists = [];
+      json['artists'].forEach((v) {
+        _artists?.add(Artists.fromJson(v));
+      });
+    }
+    _album = json['album'] != null ? Album.fromJson(json['album']) : null;
+    _starred = json['starred'];
+    _popularity = json['popularity'];
+    _score = json['score'];
+    _starredNum = json['starredNum'];
+    _duration = json['duration'];
+    _playedNum = json['playedNum'];
+    _dayPlays = json['dayPlays'];
+    _hearTime = json['hearTime'];
+    _sqMusic = json['sqMusic'] != null ? SqMusic.fromJson(json['sqMusic']) : null;
+    _hrMusic = json['hrMusic'] != null ? HrMusic.fromJson(json['hrMusic']) : null;
+    _ringtone = json['ringtone'];
+    _crbt = json['crbt'];
+    _audition = json['audition'];
+    _copyFrom = json['copyFrom'];
+    _commentThreadId = json['commentThreadId'];
+    _rtUrl = json['rtUrl'];
+    _ftype = json['ftype'];
+    _copyright = json['copyright'];
+    _transName = json['transName'];
+    _sign = json['sign'];
+    _mark = json['mark'];
+    _originCoverType = json['originCoverType'];
+    _originSongSimpleData = json['originSongSimpleData'];
+    _single = json['single'];
+    _noCopyrightRcmd = json['noCopyrightRcmd'];
+    _mMusic = json['mMusic'] != null ? MMusic.fromJson(json['mMusic']) : null;
+    _lMusic = json['lMusic'] != null ? LMusic.fromJson(json['lMusic']) : null;
+    _bMusic = json['bMusic'] != null ? BMusic.fromJson(json['bMusic']) : null;
+    _rtype = json['rtype'];
+    _rurl = json['rurl'];
+    _hMusic = json['hMusic'] != null ? HMusic.fromJson(json['hMusic']) : null;
+    _mvid = json['mvid'];
+    _mp3Url = json['mp3Url'];
+  }
+  String? _name;
+  num? _id;
+  num? _position;
+  List<dynamic>? _alias;
+  num? _status;
+  num? _fee;
+  num? _copyrightId;
+  String? _disc;
+  num? _no;
+  List<Artists>? _artists;
+  Album? _album;
+  bool? _starred;
+  num? _popularity;
+  num? _score;
+  num? _starredNum;
+  num? _duration;
+  num? _playedNum;
+  num? _dayPlays;
+  num? _hearTime;
+  SqMusic? _sqMusic;
+  HrMusic? _hrMusic;
+  String? _ringtone;
+  dynamic _crbt;
+  dynamic _audition;
+  String? _copyFrom;
+  String? _commentThreadId;
+  dynamic _rtUrl;
+  num? _ftype;
+  List<dynamic>? _rtUrls;
+  num? _copyright;
+  dynamic _transName;
+  dynamic _sign;
+  num? _mark;
+  num? _originCoverType;
+  dynamic _originSongSimpleData;
+  num? _single;
+  dynamic _noCopyrightRcmd;
+  MMusic? _mMusic;
+  LMusic? _lMusic;
+  BMusic? _bMusic;
+  num? _rtype;
+  dynamic _rurl;
+  HMusic? _hMusic;
+  num? _mvid;
+  dynamic _mp3Url;
+  SongData copyWith({  String? name,
+    num? id,
+    num? position,
+    List<dynamic>? alias,
+    num? status,
+    num? fee,
+    num? copyrightId,
+    String? disc,
+    num? no,
+    List<Artists>? artists,
+    Album? album,
+    bool? starred,
+    num? popularity,
+    num? score,
+    num? starredNum,
+    num? duration,
+    num? playedNum,
+    num? dayPlays,
+    num? hearTime,
+    SqMusic? sqMusic,
+    HrMusic? hrMusic,
+    String? ringtone,
+    dynamic crbt,
+    dynamic audition,
+    String? copyFrom,
+    String? commentThreadId,
+    dynamic rtUrl,
+    num? ftype,
+    List<dynamic>? rtUrls,
+    num? copyright,
+    dynamic transName,
+    dynamic sign,
+    num? mark,
+    num? originCoverType,
+    dynamic originSongSimpleData,
+    num? single,
+    dynamic noCopyrightRcmd,
+    MMusic? mMusic,
+    LMusic? lMusic,
+    BMusic? bMusic,
+    num? rtype,
+    dynamic rurl,
+    HMusic? hMusic,
+    num? mvid,
+    dynamic mp3Url,
+  }) => SongData(  name: name ?? _name,
+    id: id ?? _id,
+    position: position ?? _position,
+    alias: alias ?? _alias,
+    status: status ?? _status,
+    fee: fee ?? _fee,
+    copyrightId: copyrightId ?? _copyrightId,
+    disc: disc ?? _disc,
+    no: no ?? _no,
+    artists: artists ?? _artists,
+    album: album ?? _album,
+    starred: starred ?? _starred,
+    popularity: popularity ?? _popularity,
+    score: score ?? _score,
+    starredNum: starredNum ?? _starredNum,
+    duration: duration ?? _duration,
+    playedNum: playedNum ?? _playedNum,
+    dayPlays: dayPlays ?? _dayPlays,
+    hearTime: hearTime ?? _hearTime,
+    sqMusic: sqMusic ?? _sqMusic,
+    hrMusic: hrMusic ?? _hrMusic,
+    ringtone: ringtone ?? _ringtone,
+    crbt: crbt ?? _crbt,
+    audition: audition ?? _audition,
+    copyFrom: copyFrom ?? _copyFrom,
+    commentThreadId: commentThreadId ?? _commentThreadId,
+    rtUrl: rtUrl ?? _rtUrl,
+    ftype: ftype ?? _ftype,
+    rtUrls: rtUrls ?? _rtUrls,
+    copyright: copyright ?? _copyright,
+    transName: transName ?? _transName,
+    sign: sign ?? _sign,
+    mark: mark ?? _mark,
+    originCoverType: originCoverType ?? _originCoverType,
+    originSongSimpleData: originSongSimpleData ?? _originSongSimpleData,
+    single: single ?? _single,
+    noCopyrightRcmd: noCopyrightRcmd ?? _noCopyrightRcmd,
+    mMusic: mMusic ?? _mMusic,
+    lMusic: lMusic ?? _lMusic,
+    bMusic: bMusic ?? _bMusic,
+    rtype: rtype ?? _rtype,
+    rurl: rurl ?? _rurl,
+    hMusic: hMusic ?? _hMusic,
+    mvid: mvid ?? _mvid,
+    mp3Url: mp3Url ?? _mp3Url,
+  );
+  String? get name => _name;
+  num? get id => _id;
+  num? get position => _position;
+  List<dynamic>? get alias => _alias;
+  num? get status => _status;
+  num? get fee => _fee;
+  num? get copyrightId => _copyrightId;
+  String? get disc => _disc;
+  num? get no => _no;
+  List<Artists>? get artists => _artists;
+  Album? get album => _album;
+  bool? get starred => _starred;
+  num? get popularity => _popularity;
+  num? get score => _score;
+  num? get starredNum => _starredNum;
+  num? get duration => _duration;
+  num? get playedNum => _playedNum;
+  num? get dayPlays => _dayPlays;
+  num? get hearTime => _hearTime;
+  SqMusic? get sqMusic => _sqMusic;
+  HrMusic? get hrMusic => _hrMusic;
+  String? get ringtone => _ringtone;
+  dynamic get crbt => _crbt;
+  dynamic get audition => _audition;
+  String? get copyFrom => _copyFrom;
+  String? get commentThreadId => _commentThreadId;
+  dynamic get rtUrl => _rtUrl;
+  num? get ftype => _ftype;
+  List<dynamic>? get rtUrls => _rtUrls;
+  num? get copyright => _copyright;
+  dynamic get transName => _transName;
+  dynamic get sign => _sign;
+  num? get mark => _mark;
+  num? get originCoverType => _originCoverType;
+  dynamic get originSongSimpleData => _originSongSimpleData;
+  num? get single => _single;
+  dynamic get noCopyrightRcmd => _noCopyrightRcmd;
+  MMusic? get mMusic => _mMusic;
+  LMusic? get lMusic => _lMusic;
+  BMusic? get bMusic => _bMusic;
+  num? get rtype => _rtype;
+  dynamic get rurl => _rurl;
+  HMusic? get hMusic => _hMusic;
+  num? get mvid => _mvid;
+  dynamic get mp3Url => _mp3Url;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['position'] = _position;
+    if (_alias != null) {
+      map['alias'] = _alias?.map((v) => v.toJson()).toList();
+    }
+    map['status'] = _status;
+    map['fee'] = _fee;
+    map['copyrightId'] = _copyrightId;
+    map['disc'] = _disc;
+    map['no'] = _no;
+    if (_artists != null) {
+      map['artists'] = _artists?.map((v) => v.toJson()).toList();
+    }
+    if (_album != null) {
+      map['album'] = _album?.toJson();
+    }
+    map['starred'] = _starred;
+    map['popularity'] = _popularity;
+    map['score'] = _score;
+    map['starredNum'] = _starredNum;
+    map['duration'] = _duration;
+    map['playedNum'] = _playedNum;
+    map['dayPlays'] = _dayPlays;
+    map['hearTime'] = _hearTime;
+    if (_sqMusic != null) {
+      map['sqMusic'] = _sqMusic?.toJson();
+    }
+    if (_hrMusic != null) {
+      map['hrMusic'] = _hrMusic?.toJson();
+    }
+    map['ringtone'] = _ringtone;
+    map['crbt'] = _crbt;
+    map['audition'] = _audition;
+    map['copyFrom'] = _copyFrom;
+    map['commentThreadId'] = _commentThreadId;
+    map['rtUrl'] = _rtUrl;
+    map['ftype'] = _ftype;
+    if (_rtUrls != null) {
+      map['rtUrls'] = _rtUrls?.map((v) => v.toJson()).toList();
+    }
+    map['copyright'] = _copyright;
+    map['transName'] = _transName;
+    map['sign'] = _sign;
+    map['mark'] = _mark;
+    map['originCoverType'] = _originCoverType;
+    map['originSongSimpleData'] = _originSongSimpleData;
+    map['single'] = _single;
+    map['noCopyrightRcmd'] = _noCopyrightRcmd;
+    if (_mMusic != null) {
+      map['mMusic'] = _mMusic?.toJson();
+    }
+    if (_lMusic != null) {
+      map['lMusic'] = _lMusic?.toJson();
+    }
+    if (_bMusic != null) {
+      map['bMusic'] = _bMusic?.toJson();
+    }
+    map['rtype'] = _rtype;
+    map['rurl'] = _rurl;
+    if (_hMusic != null) {
+      map['hMusic'] = _hMusic?.toJson();
+    }
+    map['mvid'] = _mvid;
+    map['mp3Url'] = _mp3Url;
+    return map;
+  }
+
+}
+
+class HMusic {
+  HMusic({
+    dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,}){
+    _name = name;
+    _id = id;
+    _size = size;
+    _extension = extension;
+    _sr = sr;
+    _dfsId = dfsId;
+    _bitrate = bitrate;
+    _playTime = playTime;
+    _volumeDelta = volumeDelta;
+  }
+
+  HMusic.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _size = json['size'];
+    _extension = json['extension'];
+    _sr = json['sr'];
+    _dfsId = json['dfsId'];
+    _bitrate = json['bitrate'];
+    _playTime = json['playTime'];
+    _volumeDelta = json['volumeDelta'];
+  }
+  dynamic _name;
+  num? _id;
+  num? _size;
+  String? _extension;
+  num? _sr;
+  num? _dfsId;
+  num? _bitrate;
+  num? _playTime;
+  num? _volumeDelta;
+  HMusic copyWith({  dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,
+  }) => HMusic(  name: name ?? _name,
+    id: id ?? _id,
+    size: size ?? _size,
+    extension: extension ?? _extension,
+    sr: sr ?? _sr,
+    dfsId: dfsId ?? _dfsId,
+    bitrate: bitrate ?? _bitrate,
+    playTime: playTime ?? _playTime,
+    volumeDelta: volumeDelta ?? _volumeDelta,
+  );
+  dynamic get name => _name;
+  num? get id => _id;
+  num? get size => _size;
+  String? get extension => _extension;
+  num? get sr => _sr;
+  num? get dfsId => _dfsId;
+  num? get bitrate => _bitrate;
+  num? get playTime => _playTime;
+  num? get volumeDelta => _volumeDelta;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['size'] = _size;
+    map['extension'] = _extension;
+    map['sr'] = _sr;
+    map['dfsId'] = _dfsId;
+    map['bitrate'] = _bitrate;
+    map['playTime'] = _playTime;
+    map['volumeDelta'] = _volumeDelta;
+    return map;
+  }
+
+}
+
+class BMusic {
+  BMusic({
+    dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,}){
+    _name = name;
+    _id = id;
+    _size = size;
+    _extension = extension;
+    _sr = sr;
+    _dfsId = dfsId;
+    _bitrate = bitrate;
+    _playTime = playTime;
+    _volumeDelta = volumeDelta;
+  }
+
+  BMusic.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _size = json['size'];
+    _extension = json['extension'];
+    _sr = json['sr'];
+    _dfsId = json['dfsId'];
+    _bitrate = json['bitrate'];
+    _playTime = json['playTime'];
+    _volumeDelta = json['volumeDelta'];
+  }
+  dynamic _name;
+  num? _id;
+  num? _size;
+  String? _extension;
+  num? _sr;
+  num? _dfsId;
+  num? _bitrate;
+  num? _playTime;
+  num? _volumeDelta;
+  BMusic copyWith({  dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,
+  }) => BMusic(  name: name ?? _name,
+    id: id ?? _id,
+    size: size ?? _size,
+    extension: extension ?? _extension,
+    sr: sr ?? _sr,
+    dfsId: dfsId ?? _dfsId,
+    bitrate: bitrate ?? _bitrate,
+    playTime: playTime ?? _playTime,
+    volumeDelta: volumeDelta ?? _volumeDelta,
+  );
+  dynamic get name => _name;
+  num? get id => _id;
+  num? get size => _size;
+  String? get extension => _extension;
+  num? get sr => _sr;
+  num? get dfsId => _dfsId;
+  num? get bitrate => _bitrate;
+  num? get playTime => _playTime;
+  num? get volumeDelta => _volumeDelta;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['size'] = _size;
+    map['extension'] = _extension;
+    map['sr'] = _sr;
+    map['dfsId'] = _dfsId;
+    map['bitrate'] = _bitrate;
+    map['playTime'] = _playTime;
+    map['volumeDelta'] = _volumeDelta;
+    return map;
+  }
+
+}
+
+class LMusic {
+  LMusic({
+    dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,}){
+    _name = name;
+    _id = id;
+    _size = size;
+    _extension = extension;
+    _sr = sr;
+    _dfsId = dfsId;
+    _bitrate = bitrate;
+    _playTime = playTime;
+    _volumeDelta = volumeDelta;
+  }
+
+  LMusic.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _size = json['size'];
+    _extension = json['extension'];
+    _sr = json['sr'];
+    _dfsId = json['dfsId'];
+    _bitrate = json['bitrate'];
+    _playTime = json['playTime'];
+    _volumeDelta = json['volumeDelta'];
+  }
+  dynamic _name;
+  num? _id;
+  num? _size;
+  String? _extension;
+  num? _sr;
+  num? _dfsId;
+  num? _bitrate;
+  num? _playTime;
+  num? _volumeDelta;
+  LMusic copyWith({  dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,
+  }) => LMusic(  name: name ?? _name,
+    id: id ?? _id,
+    size: size ?? _size,
+    extension: extension ?? _extension,
+    sr: sr ?? _sr,
+    dfsId: dfsId ?? _dfsId,
+    bitrate: bitrate ?? _bitrate,
+    playTime: playTime ?? _playTime,
+    volumeDelta: volumeDelta ?? _volumeDelta,
+  );
+  dynamic get name => _name;
+  num? get id => _id;
+  num? get size => _size;
+  String? get extension => _extension;
+  num? get sr => _sr;
+  num? get dfsId => _dfsId;
+  num? get bitrate => _bitrate;
+  num? get playTime => _playTime;
+  num? get volumeDelta => _volumeDelta;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['size'] = _size;
+    map['extension'] = _extension;
+    map['sr'] = _sr;
+    map['dfsId'] = _dfsId;
+    map['bitrate'] = _bitrate;
+    map['playTime'] = _playTime;
+    map['volumeDelta'] = _volumeDelta;
+    return map;
+  }
+
+}
+
+class MMusic {
+  MMusic({
+    dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,}){
+    _name = name;
+    _id = id;
+    _size = size;
+    _extension = extension;
+    _sr = sr;
+    _dfsId = dfsId;
+    _bitrate = bitrate;
+    _playTime = playTime;
+    _volumeDelta = volumeDelta;
+  }
+
+  MMusic.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _size = json['size'];
+    _extension = json['extension'];
+    _sr = json['sr'];
+    _dfsId = json['dfsId'];
+    _bitrate = json['bitrate'];
+    _playTime = json['playTime'];
+    _volumeDelta = json['volumeDelta'];
+  }
+  dynamic _name;
+  num? _id;
+  num? _size;
+  String? _extension;
+  num? _sr;
+  num? _dfsId;
+  num? _bitrate;
+  num? _playTime;
+  num? _volumeDelta;
+  MMusic copyWith({  dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,
+  }) => MMusic(  name: name ?? _name,
+    id: id ?? _id,
+    size: size ?? _size,
+    extension: extension ?? _extension,
+    sr: sr ?? _sr,
+    dfsId: dfsId ?? _dfsId,
+    bitrate: bitrate ?? _bitrate,
+    playTime: playTime ?? _playTime,
+    volumeDelta: volumeDelta ?? _volumeDelta,
+  );
+  dynamic get name => _name;
+  num? get id => _id;
+  num? get size => _size;
+  String? get extension => _extension;
+  num? get sr => _sr;
+  num? get dfsId => _dfsId;
+  num? get bitrate => _bitrate;
+  num? get playTime => _playTime;
+  num? get volumeDelta => _volumeDelta;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['size'] = _size;
+    map['extension'] = _extension;
+    map['sr'] = _sr;
+    map['dfsId'] = _dfsId;
+    map['bitrate'] = _bitrate;
+    map['playTime'] = _playTime;
+    map['volumeDelta'] = _volumeDelta;
+    return map;
+  }
+
+}
+
+class HrMusic {
+  HrMusic({
+    dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,}){
+    _name = name;
+    _id = id;
+    _size = size;
+    _extension = extension;
+    _sr = sr;
+    _dfsId = dfsId;
+    _bitrate = bitrate;
+    _playTime = playTime;
+    _volumeDelta = volumeDelta;
+  }
+
+  HrMusic.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _size = json['size'];
+    _extension = json['extension'];
+    _sr = json['sr'];
+    _dfsId = json['dfsId'];
+    _bitrate = json['bitrate'];
+    _playTime = json['playTime'];
+    _volumeDelta = json['volumeDelta'];
+  }
+  dynamic _name;
+  num? _id;
+  num? _size;
+  String? _extension;
+  num? _sr;
+  num? _dfsId;
+  num? _bitrate;
+  num? _playTime;
+  num? _volumeDelta;
+  HrMusic copyWith({  dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,
+  }) => HrMusic(  name: name ?? _name,
+    id: id ?? _id,
+    size: size ?? _size,
+    extension: extension ?? _extension,
+    sr: sr ?? _sr,
+    dfsId: dfsId ?? _dfsId,
+    bitrate: bitrate ?? _bitrate,
+    playTime: playTime ?? _playTime,
+    volumeDelta: volumeDelta ?? _volumeDelta,
+  );
+  dynamic get name => _name;
+  num? get id => _id;
+  num? get size => _size;
+  String? get extension => _extension;
+  num? get sr => _sr;
+  num? get dfsId => _dfsId;
+  num? get bitrate => _bitrate;
+  num? get playTime => _playTime;
+  num? get volumeDelta => _volumeDelta;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['size'] = _size;
+    map['extension'] = _extension;
+    map['sr'] = _sr;
+    map['dfsId'] = _dfsId;
+    map['bitrate'] = _bitrate;
+    map['playTime'] = _playTime;
+    map['volumeDelta'] = _volumeDelta;
+    return map;
+  }
+
+}
+
+class SqMusic {
+  SqMusic({
+    dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,}){
+    _name = name;
+    _id = id;
+    _size = size;
+    _extension = extension;
+    _sr = sr;
+    _dfsId = dfsId;
+    _bitrate = bitrate;
+    _playTime = playTime;
+    _volumeDelta = volumeDelta;
+  }
+
+  SqMusic.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _size = json['size'];
+    _extension = json['extension'];
+    _sr = json['sr'];
+    _dfsId = json['dfsId'];
+    _bitrate = json['bitrate'];
+    _playTime = json['playTime'];
+    _volumeDelta = json['volumeDelta'];
+  }
+  dynamic _name;
+  num? _id;
+  num? _size;
+  String? _extension;
+  num? _sr;
+  num? _dfsId;
+  num? _bitrate;
+  num? _playTime;
+  num? _volumeDelta;
+  SqMusic copyWith({  dynamic name,
+    num? id,
+    num? size,
+    String? extension,
+    num? sr,
+    num? dfsId,
+    num? bitrate,
+    num? playTime,
+    num? volumeDelta,
+  }) => SqMusic(  name: name ?? _name,
+    id: id ?? _id,
+    size: size ?? _size,
+    extension: extension ?? _extension,
+    sr: sr ?? _sr,
+    dfsId: dfsId ?? _dfsId,
+    bitrate: bitrate ?? _bitrate,
+    playTime: playTime ?? _playTime,
+    volumeDelta: volumeDelta ?? _volumeDelta,
+  );
+  dynamic get name => _name;
+  num? get id => _id;
+  num? get size => _size;
+  String? get extension => _extension;
+  num? get sr => _sr;
+  num? get dfsId => _dfsId;
+  num? get bitrate => _bitrate;
+  num? get playTime => _playTime;
+  num? get volumeDelta => _volumeDelta;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['size'] = _size;
+    map['extension'] = _extension;
+    map['sr'] = _sr;
+    map['dfsId'] = _dfsId;
+    map['bitrate'] = _bitrate;
+    map['playTime'] = _playTime;
+    map['volumeDelta'] = _volumeDelta;
+    return map;
+  }
+
+}
+
+class Album {
+  Album({
+    String? name,
+    num? id,
+    String? type,
+    num? size,
+    num? picId,
+    String? blurPicUrl,
+    num? companyId,
+    num? pic,
+    String? picUrl,
+    num? publishTime,
+    String? description,
+    String? tags,
+    String? company,
+    String? briefDesc,
+    Artist? artist,
+    List<dynamic>? songs,
+    List<dynamic>? alias,
+    num? status,
+    num? copyrightId,
+    String? commentThreadId,
+    List<Artists>? artists,
+    String? subType,
+    dynamic transName,
+    bool? onSale,
+    num? mark,
+    num? gapless,
+    String? picIdStr,}){
+    _name = name;
+    _id = id;
+    _type = type;
+    _size = size;
+    _picId = picId;
+    _blurPicUrl = blurPicUrl;
+    _companyId = companyId;
+    _pic = pic;
+    _picUrl = picUrl;
+    _publishTime = publishTime;
+    _description = description;
+    _tags = tags;
+    _company = company;
+    _briefDesc = briefDesc;
+    _artist = artist;
+    _songs = songs;
+    _alias = alias;
+    _status = status;
+    _copyrightId = copyrightId;
+    _commentThreadId = commentThreadId;
+    _artists = artists;
+    _subType = subType;
+    _transName = transName;
+    _onSale = onSale;
+    _mark = mark;
+    _gapless = gapless;
+    _picIdStr = picIdStr;
+  }
+
+  Album.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _type = json['type'];
+    _size = json['size'];
+    _picId = json['picId'];
+    _blurPicUrl = json['blurPicUrl'];
+    _companyId = json['companyId'];
+    _pic = json['pic'];
+    _picUrl = json['picUrl'];
+    _publishTime = json['publishTime'];
+    _description = json['description'];
+    _tags = json['tags'];
+    _company = json['company'];
+    _briefDesc = json['briefDesc'];
+    _artist = json['artist'] != null ? Artist.fromJson(json['artist']) : null;
+    _status = json['status'];
+    _copyrightId = json['copyrightId'];
+    _commentThreadId = json['commentThreadId'];
+    if (json['artists'] != null) {
+      _artists = [];
+      json['artists'].forEach((v) {
+        _artists?.add(Artists.fromJson(v));
+      });
+    }
+    _subType = json['subType'];
+    _transName = json['transName'];
+    _onSale = json['onSale'];
+    _mark = json['mark'];
+    _gapless = json['gapless'];
+    _picIdStr = json['picId_str'];
+  }
+  String? _name;
+  num? _id;
+  String? _type;
+  num? _size;
+  num? _picId;
+  String? _blurPicUrl;
+  num? _companyId;
+  num? _pic;
+  String? _picUrl;
+  num? _publishTime;
+  String? _description;
+  String? _tags;
+  String? _company;
+  String? _briefDesc;
+  Artist? _artist;
+  List<dynamic>? _songs;
+  List<dynamic>? _alias;
+  num? _status;
+  num? _copyrightId;
+  String? _commentThreadId;
+  List<Artists>? _artists;
+  String? _subType;
+  dynamic _transName;
+  bool? _onSale;
+  num? _mark;
+  num? _gapless;
+  String? _picIdStr;
+  Album copyWith({  String? name,
+    num? id,
+    String? type,
+    num? size,
+    num? picId,
+    String? blurPicUrl,
+    num? companyId,
+    num? pic,
+    String? picUrl,
+    num? publishTime,
+    String? description,
+    String? tags,
+    String? company,
+    String? briefDesc,
+    Artist? artist,
+    List<dynamic>? songs,
+    List<dynamic>? alias,
+    num? status,
+    num? copyrightId,
+    String? commentThreadId,
+    List<Artists>? artists,
+    String? subType,
+    dynamic transName,
+    bool? onSale,
+    num? mark,
+    num? gapless,
+    String? picIdStr,
+  }) => Album(  name: name ?? _name,
+    id: id ?? _id,
+    type: type ?? _type,
+    size: size ?? _size,
+    picId: picId ?? _picId,
+    blurPicUrl: blurPicUrl ?? _blurPicUrl,
+    companyId: companyId ?? _companyId,
+    pic: pic ?? _pic,
+    picUrl: picUrl ?? _picUrl,
+    publishTime: publishTime ?? _publishTime,
+    description: description ?? _description,
+    tags: tags ?? _tags,
+    company: company ?? _company,
+    briefDesc: briefDesc ?? _briefDesc,
+    artist: artist ?? _artist,
+    songs: songs ?? _songs,
+    alias: alias ?? _alias,
+    status: status ?? _status,
+    copyrightId: copyrightId ?? _copyrightId,
+    commentThreadId: commentThreadId ?? _commentThreadId,
+    artists: artists ?? _artists,
+    subType: subType ?? _subType,
+    transName: transName ?? _transName,
+    onSale: onSale ?? _onSale,
+    mark: mark ?? _mark,
+    gapless: gapless ?? _gapless,
+    picIdStr: picIdStr ?? _picIdStr,
+  );
+  String? get name => _name;
+  num? get id => _id;
+  String? get type => _type;
+  num? get size => _size;
+  num? get picId => _picId;
+  String? get blurPicUrl => _blurPicUrl;
+  num? get companyId => _companyId;
+  num? get pic => _pic;
+  String? get picUrl => _picUrl;
+  num? get publishTime => _publishTime;
+  String? get description => _description;
+  String? get tags => _tags;
+  String? get company => _company;
+  String? get briefDesc => _briefDesc;
+  Artist? get artist => _artist;
+  List<dynamic>? get songs => _songs;
+  List<dynamic>? get alias => _alias;
+  num? get status => _status;
+  num? get copyrightId => _copyrightId;
+  String? get commentThreadId => _commentThreadId;
+  List<Artists>? get artists => _artists;
+  String? get subType => _subType;
+  dynamic get transName => _transName;
+  bool? get onSale => _onSale;
+  num? get mark => _mark;
+  num? get gapless => _gapless;
+  String? get picIdStr => _picIdStr;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['type'] = _type;
+    map['size'] = _size;
+    map['picId'] = _picId;
+    map['blurPicUrl'] = _blurPicUrl;
+    map['companyId'] = _companyId;
+    map['pic'] = _pic;
+    map['picUrl'] = _picUrl;
+    map['publishTime'] = _publishTime;
+    map['description'] = _description;
+    map['tags'] = _tags;
+    map['company'] = _company;
+    map['briefDesc'] = _briefDesc;
+    if (_artist != null) {
+      map['artist'] = _artist?.toJson();
+    }
+    if (_songs != null) {
+      map['songs'] = _songs?.map((v) => v.toJson()).toList();
+    }
+    if (_alias != null) {
+      map['alias'] = _alias?.map((v) => v.toJson()).toList();
+    }
+    map['status'] = _status;
+    map['copyrightId'] = _copyrightId;
+    map['commentThreadId'] = _commentThreadId;
+    if (_artists != null) {
+      map['artists'] = _artists?.map((v) => v.toJson()).toList();
+    }
+    map['subType'] = _subType;
+    map['transName'] = _transName;
+    map['onSale'] = _onSale;
+    map['mark'] = _mark;
+    map['gapless'] = _gapless;
+    map['picId_str'] = _picIdStr;
+    return map;
+  }
+
+}
+
+class Artists {
+  Artists({
+    String? name,
+    num? id,
+    num? picId,
+    num? img1v1Id,
+    String? briefDesc,
+    String? picUrl,
+    String? img1v1Url,
+    num? albumSize,
+    List<dynamic>? alias,
+    String? trans,
+    num? musicSize,
+    num? topicPerson,}){
+    _name = name;
+    _id = id;
+    _picId = picId;
+    _img1v1Id = img1v1Id;
+    _briefDesc = briefDesc;
+    _picUrl = picUrl;
+    _img1v1Url = img1v1Url;
+    _albumSize = albumSize;
+    _alias = alias;
+    _trans = trans;
+    _musicSize = musicSize;
+    _topicPerson = topicPerson;
+  }
+
+  Artists.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _picId = json['picId'];
+    _img1v1Id = json['img1v1Id'];
+    _briefDesc = json['briefDesc'];
+    _picUrl = json['picUrl'];
+    _img1v1Url = json['img1v1Url'];
+    _albumSize = json['albumSize'];
+    _trans = json['trans'];
+    _musicSize = json['musicSize'];
+    _topicPerson = json['topicPerson'];
+  }
+  String? _name;
+  num? _id;
+  num? _picId;
+  num? _img1v1Id;
+  String? _briefDesc;
+  String? _picUrl;
+  String? _img1v1Url;
+  num? _albumSize;
+  List<dynamic>? _alias;
+  String? _trans;
+  num? _musicSize;
+  num? _topicPerson;
+  Artists copyWith({  String? name,
+    num? id,
+    num? picId,
+    num? img1v1Id,
+    String? briefDesc,
+    String? picUrl,
+    String? img1v1Url,
+    num? albumSize,
+    List<dynamic>? alias,
+    String? trans,
+    num? musicSize,
+    num? topicPerson,
+  }) => Artists(  name: name ?? _name,
+    id: id ?? _id,
+    picId: picId ?? _picId,
+    img1v1Id: img1v1Id ?? _img1v1Id,
+    briefDesc: briefDesc ?? _briefDesc,
+    picUrl: picUrl ?? _picUrl,
+    img1v1Url: img1v1Url ?? _img1v1Url,
+    albumSize: albumSize ?? _albumSize,
+    alias: alias ?? _alias,
+    trans: trans ?? _trans,
+    musicSize: musicSize ?? _musicSize,
+    topicPerson: topicPerson ?? _topicPerson,
+  );
+  String? get name => _name;
+  num? get id => _id;
+  num? get picId => _picId;
+  num? get img1v1Id => _img1v1Id;
+  String? get briefDesc => _briefDesc;
+  String? get picUrl => _picUrl;
+  String? get img1v1Url => _img1v1Url;
+  num? get albumSize => _albumSize;
+  List<dynamic>? get alias => _alias;
+  String? get trans => _trans;
+  num? get musicSize => _musicSize;
+  num? get topicPerson => _topicPerson;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['picId'] = _picId;
+    map['img1v1Id'] = _img1v1Id;
+    map['briefDesc'] = _briefDesc;
+    map['picUrl'] = _picUrl;
+    map['img1v1Url'] = _img1v1Url;
+    map['albumSize'] = _albumSize;
+    if (_alias != null) {
+      map['alias'] = _alias?.map((v) => v.toJson()).toList();
+    }
+    map['trans'] = _trans;
+    map['musicSize'] = _musicSize;
+    map['topicPerson'] = _topicPerson;
+    return map;
+  }
+
+}
+
+class Artist {
+  Artist({
+    String? name,
+    num? id,
+    num? picId,
+    num? img1v1Id,
+    String? briefDesc,
+    String? picUrl,
+    String? img1v1Url,
+    num? albumSize,
+    List<dynamic>? alias,
+    String? trans,
+    num? musicSize,
+    num? topicPerson,}){
+    _name = name;
+    _id = id;
+    _picId = picId;
+    _img1v1Id = img1v1Id;
+    _briefDesc = briefDesc;
+    _picUrl = picUrl;
+    _img1v1Url = img1v1Url;
+    _albumSize = albumSize;
+    _alias = alias;
+    _trans = trans;
+    _musicSize = musicSize;
+    _topicPerson = topicPerson;
+  }
+
+  Artist.fromJson(dynamic json) {
+    _name = json['name'];
+    _id = json['id'];
+    _picId = json['picId'];
+    _img1v1Id = json['img1v1Id'];
+    _briefDesc = json['briefDesc'];
+    _picUrl = json['picUrl'];
+    _img1v1Url = json['img1v1Url'];
+    _albumSize = json['albumSize'];
+    _trans = json['trans'];
+    _musicSize = json['musicSize'];
+    _topicPerson = json['topicPerson'];
+  }
+  String? _name;
+  num? _id;
+  num? _picId;
+  num? _img1v1Id;
+  String? _briefDesc;
+  String? _picUrl;
+  String? _img1v1Url;
+  num? _albumSize;
+  List<dynamic>? _alias;
+  String? _trans;
+  num? _musicSize;
+  num? _topicPerson;
+  Artist copyWith({  String? name,
+    num? id,
+    num? picId,
+    num? img1v1Id,
+    String? briefDesc,
+    String? picUrl,
+    String? img1v1Url,
+    num? albumSize,
+    List<dynamic>? alias,
+    String? trans,
+    num? musicSize,
+    num? topicPerson,
+  }) => Artist(  name: name ?? _name,
+    id: id ?? _id,
+    picId: picId ?? _picId,
+    img1v1Id: img1v1Id ?? _img1v1Id,
+    briefDesc: briefDesc ?? _briefDesc,
+    picUrl: picUrl ?? _picUrl,
+    img1v1Url: img1v1Url ?? _img1v1Url,
+    albumSize: albumSize ?? _albumSize,
+    alias: alias ?? _alias,
+    trans: trans ?? _trans,
+    musicSize: musicSize ?? _musicSize,
+    topicPerson: topicPerson ?? _topicPerson,
+  );
+  String? get name => _name;
+  num? get id => _id;
+  num? get picId => _picId;
+  num? get img1v1Id => _img1v1Id;
+  String? get briefDesc => _briefDesc;
+  String? get picUrl => _picUrl;
+  String? get img1v1Url => _img1v1Url;
+  num? get albumSize => _albumSize;
+  List<dynamic>? get alias => _alias;
+  String? get trans => _trans;
+  num? get musicSize => _musicSize;
+  num? get topicPerson => _topicPerson;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['id'] = _id;
+    map['picId'] = _picId;
+    map['img1v1Id'] = _img1v1Id;
+    map['briefDesc'] = _briefDesc;
+    map['picUrl'] = _picUrl;
+    map['img1v1Url'] = _img1v1Url;
+    map['albumSize'] = _albumSize;
+    if (_alias != null) {
+      map['alias'] = _alias?.map((v) => v.toJson()).toList();
+    }
+    map['trans'] = _trans;
+    map['musicSize'] = _musicSize;
+    map['topicPerson'] = _topicPerson;
+    return map;
+  }
+
+}
+
+class TopUiElement {
+  TopUiElement({
+    TopMainTitle? mainTitle,
+    String? description,
+    TopImage? image,
+    LabelText? labelText,
+    String? rcmdShowType,}){
+    _mainTitle = mainTitle;
+    _description = description;
+    _image = image;
+    _labelText = labelText;
+    _rcmdShowType = rcmdShowType;
+  }
+
+  TopUiElement.fromJson(dynamic json) {
+    _mainTitle = json['mainTitle'] != null ? TopMainTitle.fromJson(json['mainTitle']) : null;
+    _description = json['description'];
+    _image = json['image'] != null ? TopImage.fromJson(json['image']) : null;
+    _labelText = json['labelText'] != null ? LabelText.fromJson(json['labelText']) : null;
+    _rcmdShowType = json['rcmdShowType'];
+  }
+  TopMainTitle? _mainTitle;
+  String? _description;
+  TopImage? _image;
+  LabelText? _labelText;
+  String? _rcmdShowType;
+  TopUiElement copyWith({  TopMainTitle? mainTitle,
+    String? description,
+    TopImage? image,
+    LabelText? labelText,
+    String? rcmdShowType,
+  }) => TopUiElement(  mainTitle: mainTitle ?? _mainTitle,
+    description: description ?? _description,
+    image: image ?? _image,
+    labelText: labelText ?? _labelText,
+    rcmdShowType: rcmdShowType ?? _rcmdShowType,
+  );
+  TopMainTitle? get mainTitle => _mainTitle;
+  String? get description => _description;
+  TopImage? get image => _image;
+  LabelText? get labelText => _labelText;
+  String? get rcmdShowType => _rcmdShowType;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (_mainTitle != null) {
+      map['mainTitle'] = _mainTitle?.toJson();
+    }
+    map['description'] = _description;
+    if (_image != null) {
+      map['image'] = _image?.toJson();
+    }
+    if (_labelText != null) {
+      map['labelText'] = _labelText?.toJson();
+    }
+    map['rcmdShowType'] = _rcmdShowType;
+    return map;
+  }
+
+}
+
+class LabelText {
+  LabelText({
+    String? text,
+    String? textColor,
+    dynamic newTextColor,
+    String? labelUrl,
+    dynamic newLabelUrl,}){
+    _text = text;
+    _textColor = textColor;
+    _newTextColor = newTextColor;
+    _labelUrl = labelUrl;
+    _newLabelUrl = newLabelUrl;
+  }
+
+  LabelText.fromJson(dynamic json) {
+    _text = json['text'];
+    _textColor = json['textColor'];
+    _newTextColor = json['newTextColor'];
+    _labelUrl = json['labelUrl'];
+    _newLabelUrl = json['newLabelUrl'];
+  }
+  String? _text;
+  String? _textColor;
+  dynamic _newTextColor;
+  String? _labelUrl;
+  dynamic _newLabelUrl;
+  LabelText copyWith({  String? text,
+    String? textColor,
+    dynamic newTextColor,
+    String? labelUrl,
+    dynamic newLabelUrl,
+  }) => LabelText(  text: text ?? _text,
+    textColor: textColor ?? _textColor,
+    newTextColor: newTextColor ?? _newTextColor,
+    labelUrl: labelUrl ?? _labelUrl,
+    newLabelUrl: newLabelUrl ?? _newLabelUrl,
+  );
+  String? get text => _text;
+  String? get textColor => _textColor;
+  dynamic get newTextColor => _newTextColor;
+  String? get labelUrl => _labelUrl;
+  dynamic get newLabelUrl => _newLabelUrl;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['text'] = _text;
+    map['textColor'] = _textColor;
+    map['newTextColor'] = _newTextColor;
+    map['labelUrl'] = _labelUrl;
+    map['newLabelUrl'] = _newLabelUrl;
+    return map;
+  }
+
+}
+
+class TopImage {
+  TopImage({
+    String? imageUrl,}){
+    _imageUrl = imageUrl;
+  }
+
+  TopImage.fromJson(dynamic json) {
+    _imageUrl = json['imageUrl'];
+  }
+  String? _imageUrl;
+  TopImage copyWith({  String? imageUrl,
+  }) => TopImage(  imageUrl: imageUrl ?? _imageUrl,
+  );
+  String? get imageUrl => _imageUrl;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['imageUrl'] = _imageUrl;
+    return map;
+  }
+
+}
+
+class TopMainTitle {
+  TopMainTitle({
+    String? title,
+    bool? canShowTitleLogo, String? actionType,}){
+    _title = title;
+    _canShowTitleLogo = canShowTitleLogo;
+  }
+
+  TopMainTitle.fromJson(dynamic json) {
+    _title = json['title'];
+    _canShowTitleLogo = json['canShowTitleLogo'];
+  }
+  String? _title;
+  bool? _canShowTitleLogo;
+  TopMainTitle copyWith({  String? title,
+    bool? canShowTitleLogo,
+  }) => TopMainTitle(  title: title ?? _title,
+    canShowTitleLogo: canShowTitleLogo ?? _canShowTitleLogo,
+  );
+  String? get title => _title;
+  bool? get canShowTitleLogo => _canShowTitleLogo;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['title'] = _title;
+    map['canShowTitleLogo'] = _canShowTitleLogo;
+    return map;
+  }
+
+}
+
+class CreativeExtInfoVo {
+  CreativeExtInfoVo({
+    List<num>? topListSongIds,
+    String? topListOriginType,
+    String? topListOriginId,
+    String? updateFrequency,}){
+    _topListSongIds = topListSongIds;
+    _topListOriginType = topListOriginType;
+    _topListOriginId = topListOriginId;
+    _updateFrequency = updateFrequency;
+  }
+
+  CreativeExtInfoVo.fromJson(dynamic json) {
+    _topListSongIds = json['topListSongIds'] != null ? json['topListSongIds'].cast<num>() : [];
+    _topListOriginType = json['topListOriginType'];
+    _topListOriginId = json['topListOriginId'];
+    _updateFrequency = json['updateFrequency'];
+  }
+  List<num>? _topListSongIds;
+  String? _topListOriginType;
+  String? _topListOriginId;
+  String? _updateFrequency;
+  CreativeExtInfoVo copyWith({  List<num>? topListSongIds,
+    String? topListOriginType,
+    String? topListOriginId,
+    String? updateFrequency,
+  }) => CreativeExtInfoVo(  topListSongIds: topListSongIds ?? _topListSongIds,
+    topListOriginType: topListOriginType ?? _topListOriginType,
+    topListOriginId: topListOriginId ?? _topListOriginId,
+    updateFrequency: updateFrequency ?? _updateFrequency,
+  );
+  List<num>? get topListSongIds => _topListSongIds;
+  String? get topListOriginType => _topListOriginType;
+  String? get topListOriginId => _topListOriginId;
+  String? get updateFrequency => _updateFrequency;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['topListSongIds'] = _topListSongIds;
+    map['topListOriginType'] = _topListOriginType;
+    map['topListOriginId'] = _topListOriginId;
+    map['updateFrequency'] = _updateFrequency;
     return map;
   }
 

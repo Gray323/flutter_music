@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -8,6 +9,8 @@ import 'package:new_flutter/pages/discover/discover_banner.dart';
 import 'package:new_flutter/pages/discover/discover_top_bar.dart';
 import 'package:new_flutter/pages/discover/discover_tabs.dart';
 import 'package:new_flutter/pages/discover/recommended_song_list.dart';
+import 'package:new_flutter/pages/discover/top_song_list.dart';
+import 'package:new_flutter/utils/event_bus_utils.dart';
 import 'package:new_flutter/utils/log_utils.dart';
 
 import '../../http/bean/home_page_bean.dart';
@@ -24,10 +27,13 @@ class _DiscoverPageState extends State<DiscoverPage> {
   List<Banners>? banners = [];
   Data homePageBean = Data();
   List<Creatives>? recommendList = [];
+  List<Creatives>?  topList = [];
+
 
   @override
   void initState() {
     super.initState();
+
     DioManager.instance.get(ServiceUrl.getHomeDragonBall, null, (data) {
       setState(() {
         dragonBallList = List<IconDataBean>.from(
@@ -44,21 +50,28 @@ class _DiscoverPageState extends State<DiscoverPage> {
 
 
       List<Creatives>? creativeRecommend = [];
+      List<Creatives>? creativeTop = [];
       //个性歌单
       blocks?.forEach((element) {
         switch(element.blockCode){
         // 个性歌单
           case "HOMEPAGE_BLOCK_PLAYLIST_RCMD":
-              creativeRecommend = element?.creatives;
+            creativeRecommend = element?.creatives;
+            break;
+          case "HOMEPAGE_BLOCK_TOPLIST":
+            creativeTop = element?.creatives;
             break;
         }
       });
 
       banners = extInfo?.banners;
       recommendList = creativeRecommend;
+      topList = creativeTop;
       setState(() {});
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +81,18 @@ class _DiscoverPageState extends State<DiscoverPage> {
     //   dragonBallList = List<Data>.from(json.decode(value[1].toString()).map((e) => Data.fromJson(e)));
     // });
 
-    return Column(
-      children: [
-        DiscoverTopBar(),
-        DiscoverBanner(banners),
-        DiscoverTabs(dragonBallList),
-        RecommendedSongList(recommendList)
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          DiscoverTopBar(),
+          DiscoverBanner(banners),
+          DiscoverTabs(dragonBallList),
+          RecommendedSongList(recommendList),
+          TopSongList(topList),
+        ],
+      ),
+
     );
   }
+
 }

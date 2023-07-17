@@ -7,6 +7,7 @@ import 'package:new_flutter/utils/text_utils.dart';
 
 import '../../constant/constant.dart';
 import '../../http/bean/home_page_bean.dart';
+import '../../utils/event_bus_utils.dart';
 
 class RecommendedSongList extends StatefulWidget {
   List<Creatives>? recommendList = [];
@@ -31,64 +32,84 @@ class RecommendedSongListState extends State<RecommendedSongList> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "推荐歌单>",
                   style: TextStyle(fontSize: 18),
                 ),
                 InkWell(
                   child:  Image.asset("${Constant.ASSETS_IMG}icon_more.png", width: 24, height: 24),
                   onTap: (){
-                    showBottomSheet(context: context, builder: (BuildContext context){
+                    showModalBottomSheet(context: context, builder: (context){
                       return DisCoverBottomSheetFactory.createBottomSheet(context, "推荐歌单", "");
-                    });
+                    },
+                    backgroundColor: Colors.white,
+                    barrierColor: Colors.black54,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20), topRight: Radius.circular(20)
+                      )
+                    )
+                    );
                   },
                 )
               ],
             ),
             Container(
-              margin: const EdgeInsets.only(top: 18),
-              height: 160,
+              margin: const EdgeInsets.only(top: 18, bottom: 18),
+              height: 204,
               child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: recommendList.map((e) => Container(
-                    width: 160,
-                    height: 160,
-                    margin: const EdgeInsets.only(right: 18),
-                    decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
-                    clipBehavior: Clip.hardEdge,
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                              decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
-                            clipBehavior: Clip.hardEdge,
-                            child: Image.network(e.uiElement?.image?.imageUrl ?? ""),
-                          )
+                  children: recommendList.map((e) => Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 160,
+                        height: 160,
+                        margin: const EdgeInsets.only(right: 18),
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
+                        clipBehavior: Clip.hardEdge,
+                        child: Stack(
+                          children: [
+                            Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
+                                  clipBehavior: Clip.hardEdge,
+                                  child: Image.network(e.uiElement?.image?.imageUrl ?? ""),
+                                )
+                            ),
+                            Positioned(
+                                right: 8,
+                                bottom: 8,
+                                child: Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 24, height: 24)
+                            ),
+                            Positioned(
+                              right: 8,
+                              top: 8,
+                              child: Row(
+                                children: [
+                                  Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 12, height: 12),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 4),
+                                    child: Text(
+                                      TextUtils.getSongNum(e.resources?[0]?.resourceExtInfo!.playCount ?? 0),
+                                      style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                        Positioned(
-                          right: 8,
-                          bottom: 8,
-                          child: Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 24, height: 24)
-                        ),
-                        Positioned(
-                          right: 8,
-                          top: 8,
-                          child: Row(
-                            children: [
-                              Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 12, height: 12),
-                              Container(
-                                margin: const EdgeInsets.only(left: 4),
-                                child: Text(
-                                  TextUtils.getSongNum(e.resources?[0]?.resourceExtInfo!.playCount ?? 0),
-                                  style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      Container(
+                        width: 160,
+                        margin: EdgeInsets.only(top: 4, left: 0),
+                        child:  Text(e.uiElement?.mainTitle?.title ?? ""),
+                      ),
+
+                    ],
                   )).toList()
               ),
             )

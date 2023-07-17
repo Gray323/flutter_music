@@ -6,6 +6,6 @@ class IndexPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IndexTabs();
+    return const IndexTabs();
   }
 }
