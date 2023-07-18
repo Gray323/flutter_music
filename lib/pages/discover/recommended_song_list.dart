@@ -56,53 +56,61 @@ class RecommendedSongListState extends State<RecommendedSongList> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 18, bottom: 18),
-              height: 204,
+              height: 230,
               child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: recommendList.map((e) => Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 160,
-                        height: 160,
-                        margin: const EdgeInsets.only(right: 18),
-                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
-                        clipBehavior: Clip.hardEdge,
-                        child: Stack(
-                          children: [
-                            Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
-                                  clipBehavior: Clip.hardEdge,
-                                  child: Image.network(e.uiElement?.image?.imageUrl ?? ""),
-                                )
-                            ),
-                            Positioned(
-                                right: 8,
-                                bottom: 8,
-                                child: Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 24, height: 24)
-                            ),
-                            Positioned(
-                              right: 8,
-                              top: 8,
-                              child: Row(
-                                children: [
-                                  Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 12, height: 12),
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 4),
-                                    child: Text(
-                                      TextUtils.getSongNum(e.resources?[0]?.resourceExtInfo!.playCount ?? 0),
-                                      style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
-                                    ),
+                      Card(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        color: Colors.transparent,
+                        margin: const EdgeInsets.only(right:12),
+                        elevation: 4,
+                        borderOnForeground: false,
+                        child:  Container(
+                          width: 160,
+                          height: 160,
+                          padding: const EdgeInsets.only(right:4),
+                          decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
+                          clipBehavior: Clip.hardEdge,
+                          child: Stack(
+                            children: [
+                              Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
+                                    clipBehavior: Clip.hardEdge,
+                                    child: Image.network(e.uiElement?.image?.imageUrl ?? ""),
                                   )
-                                ],
                               ),
-                            )
-                          ],
+                              Positioned(
+                                  right: 8,
+                                  bottom: 8,
+                                  child: Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 24, height: 24)
+                              ),
+                              Positioned(
+                                right: 8,
+                                top: 8,
+                                child: Row(
+                                  children: [
+                                    Image.asset("${Constant.ASSETS_IMG}icon_play.png", width: 12, height: 12),
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 4),
+                                      child: Text(
+                                        TextUtils.getSongNum(e.resources?[0]?.resourceExtInfo!.playCount ?? 0),
+                                        style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
+
                       Container(
                         width: 160,
                         margin: EdgeInsets.only(top: 4, left: 0),

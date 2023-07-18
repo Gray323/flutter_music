@@ -1803,11 +1803,17 @@ class ResourceExtInfo {
     num? playCount,
     bool? highQuality,
     bool? hasListened,
-    num? specialType,}){
+    num? specialType,
+    List<Artists>? artists,
+    SongData? songData,
+    SongPrivilege? songPrivilege}){
     _playCount = playCount;
     _highQuality = highQuality;
-    _hasListened = hasListened;
     _specialType = specialType;
+    _artists = artists;
+    _songData = songData;
+    _hasListened = hasListened;
+    _songPrivilege = songPrivilege;
   }
 
   ResourceExtInfo.fromJson(dynamic json) {
@@ -1815,24 +1821,44 @@ class ResourceExtInfo {
     _highQuality = json['highQuality'];
     _hasListened = json['hasListened'];
     _specialType = json['specialType'];
+    if (json['artists'] != null) {
+      _artists = [];
+      json['artists'].forEach((v) {
+        _artists?.add(Artists.fromJson(v));
+      });
+    }
+    _songData = json['songData'] != null ? SongData.fromJson(json['songData']) : null;
+    _songPrivilege = json['songPrivilege'] != null ? SongPrivilege.fromJson(json['songPrivilege']) : null;
   }
   num? _playCount;
   bool? _highQuality;
   bool? _hasListened;
   num? _specialType;
+  List<Artists>? _artists;
+  SongData? _songData;
+  SongPrivilege? _songPrivilege;
   ResourceExtInfo copyWith({  num? playCount,
     bool? highQuality,
     bool? hasListened,
     num? specialType,
+    List<Artists>? artists,
+    SongData? songData,
+    SongPrivilege? songPrivilege,
   }) => ResourceExtInfo(  playCount: playCount ?? _playCount,
     highQuality: highQuality ?? _highQuality,
     hasListened: hasListened ?? _hasListened,
     specialType: specialType ?? _specialType,
+    artists: artists ?? _artists,
+    songData: songData ?? _songData,
+    songPrivilege: songPrivilege ?? _songPrivilege,
   );
   num? get playCount => _playCount;
   bool? get highQuality => _highQuality;
   bool? get hasListened => _hasListened;
   num? get specialType => _specialType;
+  List<Artists>? get artists => _artists;
+  SongData? get songData => _songData;
+  SongPrivilege? get songPrivilege => _songPrivilege;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -1840,6 +1866,15 @@ class ResourceExtInfo {
     map['highQuality'] = _highQuality;
     map['hasListened'] = _hasListened;
     map['specialType'] = _specialType;
+    if (_artists != null) {
+      map['artists'] = _artists?.map((v) => v.toJson()).toList();
+    }
+    if (_songData != null) {
+      map['songData'] = _songData?.toJson();
+    }
+    if (_songPrivilege != null) {
+      map['songPrivilege'] = _songPrivilege?.toJson();
+    }
     return map;
   }
 
@@ -1850,36 +1885,37 @@ class UiElement {
   UiElement({
     MainTitle? mainTitle,
     UiImage? image,
-    List<String>? labelTexts,
+    LabelText? labelText,
     String? rcmdShowType,}){
     _mainTitle = mainTitle;
     _image = image;
-    _labelTexts = labelTexts;
+    _labelText = labelText;
     _rcmdShowType = rcmdShowType;
   }
 
   UiElement.fromJson(dynamic json) {
     _mainTitle = json['mainTitle'] != null ? MainTitle.fromJson(json['mainTitle']) : null;
     _image = json['image'] != null ? UiImage.fromJson(json['image']) : null;
-    _labelTexts = json['labelTexts'] != null ? json['labelTexts'].cast<String>() : [];
+    _labelText = json['labelText'] != null ? LabelText.fromJson(json['labelText']) : null;
     _rcmdShowType = json['rcmdShowType'];
   }
   MainTitle? _mainTitle;
   UiImage? _image;
-  List<String>? _labelTexts;
+  LabelText? _labelText;
   String? _rcmdShowType;
   UiElement copyWith({  MainTitle? mainTitle,
     UiImage? image,
     List<String>? labelTexts,
     String? rcmdShowType,
+    LabelText? labelText,
   }) => UiElement(  mainTitle: mainTitle ?? _mainTitle,
     image: image ?? _image,
-    labelTexts: labelTexts ?? _labelTexts,
+    labelText: labelText ?? _labelText,
     rcmdShowType: rcmdShowType ?? _rcmdShowType,
   );
   MainTitle? get mainTitle => _mainTitle;
   UiImage? get image => _image;
-  List<String>? get labelTexts => _labelTexts;
+  LabelText? get labelText => _labelText;
   String? get rcmdShowType => _rcmdShowType;
 
   Map<String, dynamic> toJson() {
@@ -1890,7 +1926,9 @@ class UiElement {
     if (_image != null) {
       map['image'] = _image?.toJson();
     }
-    map['labelTexts'] = _labelTexts;
+    if (_labelText != null) {
+      map['labelText'] = _labelText?.toJson();
+    }
     map['rcmdShowType'] = _rcmdShowType;
     return map;
   }
@@ -1923,16 +1961,20 @@ class UiImage {
 class MainTitle {
   MainTitle({
     String? title,
-    bool? canShowTitleLogo,}){
+    bool? canShowTitleLogo,
+    String? titleDesc}){
     _title = title;
+    _titleDesc = titleDesc;
     _canShowTitleLogo = canShowTitleLogo;
   }
 
   MainTitle.fromJson(dynamic json) {
     _title = json['title'];
+    _titleDesc = json['titleDesc'];
     _canShowTitleLogo = json['canShowTitleLogo'];
   }
   String? _title;
+  String? _titleDesc;
   bool? _canShowTitleLogo;
   MainTitle copyWith({  String? title,
     bool? canShowTitleLogo,
@@ -1940,11 +1982,13 @@ class MainTitle {
     canShowTitleLogo: canShowTitleLogo ?? _canShowTitleLogo,
   );
   String? get title => _title;
+  String? get titleDesc => _titleDesc;
   bool? get canShowTitleLogo => _canShowTitleLogo;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['title'] = _title;
+    map['titleDesc'] = _titleDesc;
     map['canShowTitleLogo'] = _canShowTitleLogo;
     return map;
   }

@@ -88,7 +88,9 @@ class IndexTabState extends State<IndexTabs>{
           });
         },
       ),
-      body: tabBodies[currentIndex],
+      body: SafeArea(
+        child: tabBodies[currentIndex],
+      )
     );
   }
 
