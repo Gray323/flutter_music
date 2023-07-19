@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -8,8 +9,10 @@ import 'package:new_flutter/http/services_url.dart';
 import 'package:new_flutter/pages/discover/discover_banner.dart';
 import 'package:new_flutter/pages/discover/discover_top_bar.dart';
 import 'package:new_flutter/pages/discover/discover_tabs.dart';
+import 'package:new_flutter/pages/discover/radar_playlist.dart';
 import 'package:new_flutter/pages/discover/recommended_song_list.dart';
 import 'package:new_flutter/pages/discover/top_song_list.dart';
+import 'package:new_flutter/pages/discover/widget/discover_line.dart';
 import 'package:new_flutter/utils/event_bus_utils.dart';
 import 'package:new_flutter/utils/log_utils.dart';
 
@@ -22,44 +25,56 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
-
   List<IconDataBean> dragonBallList = [];
   List<Banners>? banners = [];
   Data homePageBean = Data();
   List<Creatives>? recommendList = [];
-  List<Creatives>?  topList = [];
-
+  List<Creatives>? personalRecommendList = [];
+  List<Creatives>? topList = [];
+  List<Creatives>? radarList = [];
 
   @override
   void initState() {
     super.initState();
 
-    DioManager.instance.get(ServiceUrl.getHomeDragonBall, null, (data) {
+    Future.wait([getHomeDragonBall(), getHome(), getMusicCalendar()]).whenComplete(() {
+      print("结束了");
+    });
+  }
+
+  Future getHomeDragonBall() async {
+    return DioManager.instance.get(ServiceUrl.getHomeDragonBall, null, (data) {
       setState(() {
-        dragonBallList = List<IconDataBean>.from(
-            json.decode(json.encode((data))).map((e) => IconDataBean.fromJson(e)));
+        dragonBallList = List<IconDataBean>.from(json
+            .decode(json.encode((data)))
+            .map((e) => IconDataBean.fromJson(e)));
       });
     });
+  }
 
-    DioManager.instance.get(ServiceUrl.getHomePage, null, (data) {
-
+  Future getHome() async {
+    return DioManager.instance.get(ServiceUrl.getHomePage, null, (data) {
       homePageBean = Data.fromJson(json.decode(json.encode(data)));
       // 轮播图
       List<Blocks>? blocks = homePageBean.blocks;
       ExtInfo? extInfo = blocks?[0].extInfo;
 
-
       List<Creatives>? creativeRecommend = [];
+      List<Creatives>? creativePersonalRecommend = [];
       List<Creatives>? creativeTop = [];
+      List<Creatives>? creativeRadar = [];
       //个性歌单
       blocks?.forEach((element) {
-        switch(element.blockCode){
-        // 个性歌单
+        switch (element.blockCode) {
+          // 个性歌单
           case "HOMEPAGE_BLOCK_PLAYLIST_RCMD":
             creativeRecommend = element?.creatives;
             break;
           case "HOMEPAGE_BLOCK_TOPLIST":
             creativeTop = element?.creatives;
+            break;
+          case "HOMEPAGE_BLOCK_MGC_PLAYLIST":
+            creativeRadar = element?.creatives;
             break;
         }
       });
@@ -67,20 +82,25 @@ class _DiscoverPageState extends State<DiscoverPage> {
       banners = extInfo?.banners;
       recommendList = creativeRecommend;
       topList = creativeTop;
+      radarList = creativeRadar;
       setState(() {});
     });
   }
+  
+  Future getMusicCalendar() async{
+    Map<String, dynamic> params = HashMap();
+    DateTime now = DateTime.now();
+    DateTime monthStart = DateTime(now.year, now.month, 1);
+    DateTime monthEnd = DateTime(now.year, now.month + 1, 0, 23, 59, 59);
+    params["startTime"] = monthStart.millisecond;
+    params["endTime"] = monthEnd.millisecond;
+    return DioManager.instance.get(ServiceUrl.getMusicCalendar, params, (data){
 
-
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
-
-    // Future.wait([DioManager.instance.get(ServiceUrl.getHomePage, {}), DioManager.instance.get(ServiceUrl.getHomeDragonBall, {})]).then((value){
-    //   dragonBallList = List<Data>.from(json.decode(value[1].toString()).map((e) => Data.fromJson(e)));
-    // });
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -88,11 +108,13 @@ class _DiscoverPageState extends State<DiscoverPage> {
           DiscoverBanner(banners),
           DiscoverTabs(dragonBallList),
           RecommendedSongList(recommendList),
+          DiscoverLine(),
           TopSongList(topList),
+          DiscoverLine(),
+          RadarPlayList(radarList),
+          DiscoverLine(),
         ],
       ),
-
     );
   }
-
 }

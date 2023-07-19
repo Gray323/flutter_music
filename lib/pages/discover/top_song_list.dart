@@ -1,7 +1,9 @@
 import 'dart:ffi';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:new_flutter/pages/discover/widget/discover_bottom_sheet.dart';
+import 'package:new_flutter/utils/image_utils.dart';
 
 import '../../constant/constant.dart';
 import '../../http/bean/home_page_bean.dart';
@@ -27,7 +29,7 @@ class TopSongListState extends State<TopSongList> {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
-        margin: const EdgeInsets.only(left: 18, right: 18),
+        margin: const EdgeInsets.only(left: 18, right: 18, bottom: 18),
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +64,7 @@ class TopSongListState extends State<TopSongList> {
             child: PageView(
               allowImplicitScrolling: true,
               controller: PageController(
-                viewportFraction: 0.
+                  viewportFraction: 0.9
               ),
               scrollDirection: Axis.horizontal,
               children: topList.map((e) => Container(
@@ -71,16 +73,16 @@ class TopSongListState extends State<TopSongList> {
                 padding: EdgeInsets.all(18),
                 margin: const EdgeInsets.only(right: 18, top: 18, bottom: 18),
                 decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  boxShadow: [
-                    BoxShadow(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    boxShadow: [
+                      BoxShadow(
                         color: Colors.black12,  //底色,阴影颜色
                         offset: Offset(0, -2), //阴影位置,从什么位置开始
                         blurRadius: 15,  // 阴影模糊层度
                         spreadRadius: 1,  //阴影模糊大小
-                    )
-                  ]
+                      )
+                    ]
                 ),
                 child: Column(
                   children: [
@@ -112,7 +114,7 @@ class TopSongListState extends State<TopSongList> {
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(8),
                                   ),
-                                  child: Image.network(resource?.uiElement?.image?.imageUrl ?? "", width: 60, height: 60, fit: BoxFit.cover),
+                                  child: ImageUtils.loadImage(resource?.uiElement?.image?.imageUrl ?? "", 60, 60)
                                 )
                             ),
                             Container(

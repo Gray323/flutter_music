@@ -10,18 +10,18 @@ import '../../http/bean/home_page_bean.dart';
 import '../../utils/event_bus_utils.dart';
 import '../../utils/image_utils.dart';
 
-class RecommendedSongList extends StatefulWidget {
+class RadarPlayList extends StatefulWidget {
   List<Creatives>? recommendList = [];
 
 
-  RecommendedSongList(this.recommendList, {super.key});
+  RadarPlayList(this.recommendList, {super.key});
 
   @override
-  State<StatefulWidget> createState() => RecommendedSongListState();
+  State<StatefulWidget> createState() => RadarPlayListState();
 
 }
 
-class RecommendedSongListState extends State<RecommendedSongList> {
+class RadarPlayListState extends State<RadarPlayList> {
   List<Creatives> recommendList = [];
 
   @override
@@ -34,22 +34,22 @@ class RecommendedSongListState extends State<RecommendedSongList> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "推荐歌单>",
+                  "雷达歌单>",
                   style: TextStyle(fontSize: 18),
                 ),
                 InkWell(
                   child:  Image.asset("${Constant.ASSETS_IMG}icon_more.png", width: 24, height: 24),
                   onTap: (){
                     showModalBottomSheet(context: context, builder: (context){
-                      return DisCoverBottomSheetFactory.createBottomSheet(context, "推荐歌单", "");
+                      return DisCoverBottomSheetFactory.createBottomSheet(context, "雷达歌单", "");
                     },
-                    backgroundColor: Colors.white,
-                    barrierColor: Colors.black54,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20), topRight: Radius.circular(20)
-                      )
-                    )
+                        backgroundColor: Colors.white,
+                        barrierColor: Colors.black54,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20), topRight: Radius.circular(20)
+                            )
+                        )
                     );
                   },
                 )
@@ -81,9 +81,9 @@ class RecommendedSongListState extends State<RecommendedSongList> {
                               Align(
                                   alignment: Alignment.center,
                                   child: Container(
-                                    decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
-                                    clipBehavior: Clip.hardEdge,
-                                    child: ImageUtils.loadImage(e.uiElement?.image?.imageUrl ?? "", 160, 160)
+                                      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16))),
+                                      clipBehavior: Clip.hardEdge,
+                                      child: ImageUtils.loadImage(e.uiElement?.image?.imageUrl ?? "", 160, 160)
                                   )
                               ),
                               Positioned(
@@ -115,7 +115,7 @@ class RecommendedSongListState extends State<RecommendedSongList> {
                       Container(
                         width: 160,
                         margin: EdgeInsets.only(top: 4, left: 0),
-                        child:  Text(e.uiElement?.mainTitle?.title ?? "",  maxLines: 2, overflow: TextOverflow.ellipsis,),
+                        child:  Text(e.uiElement?.mainTitle?.title ?? "", maxLines: 2, overflow: TextOverflow.ellipsis,),
                       ),
 
                     ],
@@ -127,7 +127,7 @@ class RecommendedSongListState extends State<RecommendedSongList> {
   }
 
   @override
-  void didUpdateWidget(covariant RecommendedSongList oldWidget) {
+  void didUpdateWidget(covariant RadarPlayList oldWidget) {
     super.didUpdateWidget(oldWidget);
     setState(() {
       recommendList = widget.recommendList ?? [];
