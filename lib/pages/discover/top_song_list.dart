@@ -36,7 +36,7 @@ class TopSongListState extends State<TopSongList> {
             children: [
               const Text(
                 "排行榜>",
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
               InkWell(
                 child: Image.asset("${Constant.ASSETS_IMG}icon_more.png",

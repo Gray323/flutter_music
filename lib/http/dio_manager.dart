@@ -21,11 +21,18 @@ class DioManager{
     //dio.interceptors.add(PrettyDioLogger());
   }
 
-  Future<Map<String, dynamic>> get(String url, params, [Function? successCallBack, Function? errorCallBack]) async{
+  Future<Map<String, dynamic>> get(String url,  Map<String, dynamic>? params, [Function? successCallBack, Function? errorCallBack]) async{
     Response? response;
+    print(params);
+    if(params != null && params.isNotEmpty){
+      url = "$url?";
+      params.forEach((key, value) {
+        url = "$url$key=$value&";
+      });
+    }
     print("url->$url");
     try {
-      response = await dio.get(url, data: params) ;
+      response = await dio.get(url) ;
     }  catch (error) {
       print('请求异常: $error');
       if (errorCallBack != null) {

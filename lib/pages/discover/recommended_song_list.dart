@@ -35,7 +35,7 @@ class RecommendedSongListState extends State<RecommendedSongList> {
               children: [
                 const Text(
                   "推荐歌单>",
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
                 InkWell(
                   child:  Image.asset("${Constant.ASSETS_IMG}icon_more.png", width: 24, height: 24),
