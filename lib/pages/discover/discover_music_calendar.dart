@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_flutter/pages/discover/widget/discover_bottom_sheet.dart';
+import 'package:new_flutter/utils/date_utils.dart';
 
 import '../../constant/constant.dart';
 import '../../http/bean/music_calendar_bean.dart';
@@ -69,6 +70,7 @@ class DiscoverMusicCalendarState extends State<DiscoverMusicCalendar>{
             ],
           ),
           Container(
+            margin: EdgeInsets.only(top: 18),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(12))
@@ -87,9 +89,21 @@ class DiscoverMusicCalendarState extends State<DiscoverMusicCalendar>{
                           Container(
                             margin: EdgeInsets.only(bottom: 6),
                             child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Text("07/20"),
-                                Text("发布"),
+                                Text(DateTimeUtils.formatDateTime(e.onlineTime?.toInt() ?? 0), style: TextStyle(color: Colors.black12)),
+                                Container(
+                                  width: 32,
+                                  height: 16,
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.only(left: 16),
+                                  child: Text(e?.tag ?? "", style: TextStyle(color: Color(0xFF5975B2), fontSize: 10,)),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF5F7FA),
+                                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                                    border: Border.all(color: Colors.black12)
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -117,7 +131,7 @@ class DiscoverMusicCalendarState extends State<DiscoverMusicCalendar>{
   void didUpdateWidget(covariant DiscoverMusicCalendar oldWidget) {
     super.didUpdateWidget(oldWidget);
     setState(() {
-      musicCalendarList = widget.musicCalendarList ?? [];
+      musicCalendarList = widget.musicCalendarList?.take(2).toList() ?? [];
     });
   }
 
