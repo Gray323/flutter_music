@@ -8,7 +8,7 @@ class OtherLoginWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 150),
+      margin: const EdgeInsets.only(top: 30),
       child: Column(
         children: [
           Row(

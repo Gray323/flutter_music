@@ -7,25 +7,12 @@ class WidgetLoginTitle extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        InkWell(
-          child: Padding(
-            padding: EdgeInsets.all(12.0),
-            child: Image.asset(
-              "${Constant.ASSETS_IMG}icon_close.png",
-              width: 20,
-              height: 20,
-            ),
-          ),
-          onTap: (){
-            Navigator.pop(context);
-          }
-        ),
         const InkWell(
           child: Padding(
             padding: EdgeInsets.all(12),
-            child: Text("帮助", style: TextStyle(fontSize: 16, color: Color(0xff6b91bb)),),
+            child: Text("立即体验", style: TextStyle(fontSize: 16, color: Color(0xff6b91bb)),),
           ),
         )
       ],

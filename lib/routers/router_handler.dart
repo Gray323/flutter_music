@@ -6,7 +6,7 @@ import '../pages/index/index_page.dart';
 
 var loginPageHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
-      return const LoginPage();
+      return LoginPage();
     });
 
 var indexPageHandler = Handler(
