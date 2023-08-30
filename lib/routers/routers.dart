@@ -8,6 +8,7 @@ class Routes {
   static FluroRouter router = FluroRouter();
   static String loginPage = "/login";
   static String indexPage = "/index";
+  static String dailyRecommendPage = "/dailyRecommend";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(
@@ -17,6 +18,7 @@ class Routes {
 
     router.define(loginPage, handler: loginPageHandler);
     router.define(indexPage, handler: indexPageHandler);
+    router.define(dailyRecommendPage, handler: dailyRecommendPageHandler);
   }
 
   static Future navigateTo(BuildContext context, String path,

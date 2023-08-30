@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:new_flutter/constant/constant.dart';
 import 'package:new_flutter/routers/routers.dart';
-import 'package:new_flutter/utils/user_utils.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -31,6 +31,20 @@ class SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          elevation: 0,//去除状态栏下的一条阴影
+          toolbarHeight: 0,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            // statusBarColor: R.color.WHITE,
+            statusBarColor: Colors.transparent,
+            systemNavigationBarColor: Color(0xFF000000),
+            systemNavigationBarIconBrightness: Brightness.light,
+            statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.light,
+          ),
+          // systemOverlayStyle: SystemUiOverlayStyle.dark,
+          backgroundColor: Colors.red,
+      ),
       backgroundColor: Colors.red,
       body: Stack(
         children: [
